@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Note from "@/components/Note";
+import Portrait from "@/components/Portrait";
 import RingGauge from "@/components/RingGauge";
+import { KIND_LABEL, POSTS } from "@/data/posts";
 
 /**
  * Layer one: the man.
@@ -34,9 +36,9 @@ export default function Home() {
   return (
     <div className="space-y-20">
       {/* ---- The jacket ---- */}
-      <section className="ink-panel -mx-5 px-5 py-14 sm:px-10 sm:py-20">
+      <section className="ink-panel -mx-5 px-5 py-14 sm:px-10 sm:py-16">
         <div className="mx-auto max-w-6xl">
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,34rem)_1fr] lg:items-end">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,32rem)_1fr] lg:items-center">
             <div>
               <p className="stamp">Novelist &middot; Utah</p>
               <h1 className="display mt-4 text-[3rem] leading-[0.94] sm:text-[4.5rem]">
@@ -61,21 +63,33 @@ export default function Home() {
               </p>
             </div>
 
-            <div>
-              <p className="stamp">What he is working on, right now</p>
-              <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-4 lg:grid-cols-2">
-                {PROGRESS.map((p) => (
-                  <RingGauge key={p.label} {...p} />
-                ))}
-              </div>
-              <p
-                className="hand mt-6 text-[15px]"
-                style={{ color: "var(--panel-dim)" }}
-              >
-                Published percentages on books nobody can read yet. He has done
-                this for years.
-              </p>
+            {/* The studio shot is lit dark, so it sits on the jacket without a
+                frame — the panel and the photograph share a ground. */}
+            <Portrait
+              src="/brandon-desk.jpg"
+              alt="Brandon Sanderson at his desk, hands folded, leatherbound volumes stacked beside him."
+              className="aspect-[16/10] w-full lg:aspect-[4/3]"
+              priority
+            />
+          </div>
+
+          <div
+            className="mt-14 border-t pt-10"
+            style={{ borderColor: "var(--panel-rule)" }}
+          >
+            <p className="stamp">What he is working on, right now</p>
+            <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-4">
+              {PROGRESS.map((p) => (
+                <RingGauge key={p.label} {...p} />
+              ))}
             </div>
+            <p
+              className="hand mt-6 text-[15px]"
+              style={{ color: "var(--panel-dim)" }}
+            >
+              Published percentages on books nobody can read yet. He has done
+              this for years.
+            </p>
           </div>
         </div>
       </section>
@@ -114,6 +128,39 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ---- The weekly ---- */}
+      <section>
+        <div className="flex flex-wrap items-baseline justify-between gap-3 ruled pb-2">
+          <h2 className="display text-[1.5rem]">Every week, same desk</h2>
+          <Link href="/blog" className="text-[16px] text-accent underline underline-offset-4">
+            All posts &rarr;
+          </Link>
+        </div>
+        <article className="sheet tilt-r mt-6 overflow-hidden">
+          <div className="grid lg:grid-cols-[1.15fr_1fr]">
+            <Portrait
+              src={POSTS[0].thumb ?? "/weekly-update-thumb.jpg"}
+              alt={`Thumbnail for the weekly update: ${POSTS[0].title}`}
+              className="aspect-video lg:aspect-auto lg:min-h-[20rem]"
+            />
+            <div className="p-6 sm:p-8">
+              <div className="flex flex-wrap items-baseline gap-x-4">
+                <span className="stamp" style={{ color: "var(--brand)" }}>
+                  {KIND_LABEL[POSTS[0].kind]}
+                </span>
+                <time className="hand text-[15px] text-ink-faint" dateTime={POSTS[0].iso}>
+                  {POSTS[0].date}
+                </time>
+              </div>
+              <h3 className="mt-3 text-[1.9rem] leading-tight">{POSTS[0].title}</h3>
+              <p className="mt-4 text-[17px] leading-relaxed text-ink-soft">
+                {POSTS[0].blurb}
+              </p>
+            </div>
+          </div>
+        </article>
+      </section>
+
       {/* ---- Who he is ---- */}
       <section className="grid gap-10 lg:grid-cols-[minmax(0,38rem)_1fr]">
         <div>
@@ -138,17 +185,33 @@ export default function Home() {
             an oversight: it gets out of the way so structure and system can
             carry the weight.
           </p>
-          <p className="mt-6 text-[17px]">
+          <p className="mt-4 text-[18px] leading-relaxed text-ink-soft">
+            He is also unusually reachable for someone at this scale: a video a
+            week from the same desk, and an annual post that accounts for every
+            project he has running, including the ones that slipped.
+          </p>
+          <p className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-[17px]">
             <Link href="/workshop" className="text-accent underline underline-offset-4">
               How he builds a book &rarr;
             </Link>
+            <Link href="/blog" className="text-accent underline underline-offset-4">
+              Read the blog &rarr;
+            </Link>
           </p>
         </div>
-        <Note className="lg:mt-20 lg:ml-6">
-          Worth saying plainly: the reason to start here rather than with the
-          shared universe is that not one of these books requires the others. The
-          connections are a reward, not a prerequisite.
-        </Note>
+        <div className="space-y-6">
+          <Portrait
+            src="/brandon-portrait.jpg"
+            alt="Brandon Sanderson seated, in a dark jacket and a graphic t-shirt."
+            className="aspect-[4/5] w-full"
+            caption="Utah, where the whole operation is run from."
+          />
+          <Note>
+            Worth saying plainly: the reason to start here rather than with the
+            shared universe is that not one of these books requires the others.
+            The connections are a reward, not a prerequisite.
+          </Note>
+        </div>
       </section>
 
       {/* ---- Where to start ---- */}
