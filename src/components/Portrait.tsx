@@ -31,12 +31,19 @@ export default function Portrait({
   caption,
   className = "",
   priority = false,
+  sizes = "(max-width: 1024px) 100vw, 50vw",
 }: {
   src: string;
   alt: string;
   caption?: string;
   className?: string;
   priority?: boolean;
+  /**
+   * What width this slot actually renders at. Without a per-slot value the
+   * browser picks a candidate for a much wider box than the frame really is,
+   * and the image arrives visibly under-resolved.
+   */
+  sizes?: string;
 }) {
   const tries = candidates(src);
   const [attempt, setAttempt] = useState(0);
@@ -77,7 +84,7 @@ export default function Portrait({
             alt={alt}
             fill
             priority={priority}
-            sizes="(max-width: 1024px) 100vw, 40vw"
+            sizes={sizes}
             className="object-cover"
             onError={() => setAttempt((n) => n + 1)}
           />

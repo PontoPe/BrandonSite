@@ -69,12 +69,14 @@ export default function Home() {
               </p>
             </div>
 
-            {/* The studio shot is lit dark, so it sits on the jacket without a
-                frame — the panel and the photograph share a ground. */}
+            {/* Square source at 450px, so the frame is square and capped rather
+                than stretched across the column — upscaling it into a wide box
+                showed every bit of the softness. */}
             <Portrait
-              src="/brandon-desk.jpg"
-              alt="Brandon Sanderson at his desk, hands folded, leatherbound volumes stacked beside him."
-              className="feather aspect-[16/10] w-full lg:aspect-[4/3]"
+              src="/brandon-portrait.jpg"
+              alt="Brandon Sanderson seated in a dark jacket and a graphic t-shirt, warm light behind him."
+              className="feather aspect-square w-full max-w-[22rem] lg:justify-self-end"
+              sizes="(max-width: 1024px) 90vw, 352px"
               priority
             />
           </div>
@@ -148,6 +150,7 @@ export default function Home() {
               src={POSTS[0].thumb ?? "/weekly-update-thumb.webp"}
               alt={`Thumbnail for the weekly update: ${POSTS[0].title}`}
               className="aspect-video lg:aspect-auto lg:min-h-[20rem]"
+              sizes="(max-width: 1024px) 100vw, 640px"
             />
             <div className="p-6 sm:p-8">
               <div className="flex flex-wrap items-baseline gap-x-4">
@@ -207,10 +210,11 @@ export default function Home() {
         </div>
         <div className="space-y-6">
           <Portrait
-            src="/brandon-portrait.jpg"
-            alt="Brandon Sanderson seated, in a dark jacket and a graphic t-shirt."
-            className="aspect-[4/5] w-full"
-            caption="Utah, where the whole operation is run from."
+            src="/brandon-desk.jpg"
+            alt="Brandon Sanderson at his desk, hands folded, leatherbound volumes stacked beside him."
+            className="aspect-[3/2] w-full"
+            sizes="(max-width: 1024px) 90vw, 480px"
+            caption="The same desk the weekly video comes from."
           />
           <Aside>
             Worth saying plainly: the reason to start here rather than with the

@@ -37,6 +37,7 @@ export default function BlogPage() {
               src={lead.thumb ?? "/weekly-update-thumb.webp"}
               alt={`Thumbnail for the weekly update: ${lead.title}`}
               className="aspect-video lg:aspect-auto lg:min-h-[22rem]"
+              sizes="(max-width: 1024px) 100vw, 680px"
               priority
             />
             <div className="p-6 sm:p-8">
