@@ -90,10 +90,10 @@ captioned with the filename it wants, rather than a broken image.
 
 | File | Where it goes | What suits it |
 | --- | --- | --- |
-| `public/brandon-desk.jpg` | The jacket panel, beside his name | The dark studio shot — it is lit to the same ground as the panel, so it sits there without a frame |
-| `public/brandon-portrait.jpg` | Beside "Who he is" | A warmer seated portrait, cropped 4:5 |
-| `public/weekly-update-thumb.jpg` | Lead card on `/` and `/blog` | The current weekly-update thumbnail, 16:9 |
-| `public/weekly-update-2.jpg` | Second weekly post on `/blog` | Any older update thumbnail, 16:9 |
+| `public/brandon-desk.webp` | The jacket panel, beside his name | The dark studio shot — it is lit to the same ground as the panel, so it sits there without a frame |
+| `public/brandon-portrait.webp` | Beside "Who he is" | A warmer seated portrait, cropped 4:5 |
+| `public/weekly-update-thumb.webp` | Lead card on `/` and `/blog` | The current weekly-update thumbnail, 16:9 |
+| `public/weekly-update-2.webp` | Second weekly post on `/blog` | Any older update thumbnail, 16:9 |
 
 ## Running it
 

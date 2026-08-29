@@ -66,7 +66,7 @@ export default function Home() {
             {/* The studio shot is lit dark, so it sits on the jacket without a
                 frame — the panel and the photograph share a ground. */}
             <Portrait
-              src="/brandon-desk.jpg"
+              src="/brandon-desk.webp"
               alt="Brandon Sanderson at his desk, hands folded, leatherbound volumes stacked beside him."
               className="aspect-[16/10] w-full lg:aspect-[4/3]"
               priority
@@ -139,7 +139,7 @@ export default function Home() {
         <article className="sheet tilt-r mt-6 overflow-hidden">
           <div className="grid lg:grid-cols-[1.15fr_1fr]">
             <Portrait
-              src={POSTS[0].thumb ?? "/weekly-update-thumb.jpg"}
+              src={POSTS[0].thumb ?? "/weekly-update-thumb.webp"}
               alt={`Thumbnail for the weekly update: ${POSTS[0].title}`}
               className="aspect-video lg:aspect-auto lg:min-h-[20rem]"
             />
@@ -201,7 +201,7 @@ export default function Home() {
         </div>
         <div className="space-y-6">
           <Portrait
-            src="/brandon-portrait.jpg"
+            src="/brandon-portrait.webp"
             alt="Brandon Sanderson seated, in a dark jacket and a graphic t-shirt."
             className="aspect-[4/5] w-full"
             caption="Utah, where the whole operation is run from."
