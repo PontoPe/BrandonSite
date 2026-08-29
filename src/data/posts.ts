@@ -37,7 +37,7 @@ export const POSTS: Post[] = [
     title: "Ghostbloods and giveaways",
     date: "28 August 2026",
     iso: "2026-08-28",
-    thumb: "/weekly-update-thumb.jpg",
+    thumb: "/weekly-update-thumb.webp",
     blurb:
       "Where the second draft of Ghostbloods stands, what is going out in the Blightfall giveaway, and a stack of signed copies behind him as evidence.",
     sourced: true,
@@ -57,7 +57,7 @@ export const POSTS: Post[] = [
     title: "Emberdark is in the post",
     date: "21 August 2026",
     iso: "2026-08-21",
-    thumb: "/weekly-update-2.jpg",
+    thumb: "/weekly-update-2.webp",
     blurb:
       "Fulfilment on the Isles of the Emberdark run, plus a question about how much of a magic system a reader should be told up front.",
   },

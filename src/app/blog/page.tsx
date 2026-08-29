@@ -34,7 +34,7 @@ export default function BlogPage() {
         <article className="sheet tilt-l overflow-hidden">
           <div className="grid gap-0 lg:grid-cols-[1.15fr_1fr]">
             <Portrait
-              src={lead.thumb ?? "/weekly-update-thumb.jpg"}
+              src={lead.thumb ?? "/weekly-update-thumb.webp"}
               alt={`Thumbnail for the weekly update: ${lead.title}`}
               className="aspect-video lg:aspect-auto lg:min-h-[22rem]"
               priority
