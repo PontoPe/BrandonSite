@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Portrait from "@/components/Portrait";
-import Note from "@/components/Note";
+import Aside from "@/components/Aside";
 import { KIND_LABEL, POSTS } from "@/data/posts";
 
 export const metadata = {
@@ -31,7 +31,7 @@ export default function BlogPage() {
 
       {/* The lead is a video, because the weekly update is the thing itself. */}
       <section>
-        <article className="sheet tilt-l overflow-hidden">
+        <article className="panel overflow-hidden">
           <div className="grid gap-0 lg:grid-cols-[1.15fr_1fr]">
             <Portrait
               src={lead.thumb ?? "/weekly-update-thumb.webp"}
@@ -47,7 +47,7 @@ export default function BlogPage() {
                 >
                   {KIND_LABEL[lead.kind]}
                 </span>
-                <time className="hand text-[15px] text-ink-faint" dateTime={lead.iso}>
+                <time className="text-[15px] text-ink-faint" dateTime={lead.iso}>
                   {lead.date}
                 </time>
               </div>
@@ -68,10 +68,10 @@ export default function BlogPage() {
       <section>
         <h2 className="display ruled pb-2 text-[1.5rem]">Earlier</h2>
         <div className="mt-6 space-y-5">
-          {rest.map((post, i) => (
+          {rest.map((post) => (
             <article
               key={post.id}
-              className={`sheet p-5 sm:p-6 ${i % 2 ? "tilt-r" : "tilt-l"}`}
+              className="panel p-5 sm:p-6"
             >
               <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
                 <span
@@ -83,7 +83,7 @@ export default function BlogPage() {
                 >
                   {KIND_LABEL[post.kind]}
                 </span>
-                <time className="hand text-[15px] text-ink-faint" dateTime={post.iso}>
+                <time className="text-[15px] text-ink-faint" dateTime={post.iso}>
                   {post.date}
                 </time>
               </div>
@@ -115,10 +115,10 @@ export default function BlogPage() {
             read from, rather than both being kept by hand.
           </p>
         </div>
-        <Note side="left">
+        <Aside>
           Post text here is representative of the cadence, not transcribed —
           except the weekly update and the 2025 accounting, which are real.
-        </Note>
+        </Aside>
       </section>
     </div>
   );

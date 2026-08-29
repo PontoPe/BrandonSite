@@ -94,7 +94,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                   <Link
                     key={n.href}
                     href={n.href}
-                    className="hand text-[16px] underline-offset-4 transition hover:text-accent hover:underline"
+                    className="text-[16px] text-ink-faint underline-offset-4 transition hover:text-accent hover:underline"
                   >
                     {n.label}
                   </Link>
@@ -113,7 +113,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <footer className="border-t border-rule">
             <div className="mx-auto max-w-6xl px-5 py-8">
               <p className="stamp">Unofficial concept redesign</p>
-              <p className="hand mt-2 max-w-2xl text-[16px]">
+              <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-ink-soft">
                 A speculative design study, not affiliated with or endorsed by
                 Brandon Sanderson or Dragonsteel Books. Titles, worlds and
                 characters belong to their author; everything here is an

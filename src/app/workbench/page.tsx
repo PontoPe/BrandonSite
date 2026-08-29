@@ -1,4 +1,4 @@
-import Note from "@/components/Note";
+import Aside from "@/components/Aside";
 import RingGauge from "@/components/RingGauge";
 
 export const metadata = { title: "Workbench — Ars Arcanum" };
@@ -13,10 +13,10 @@ export const metadata = { title: "Workbench — Ars Arcanum" };
  * reported on the author's own progress bars, August 2026.
  */
 const PROGRESS = [
-  { label: "Mistborn screenplay", value: 100, detail: "written himself, full time, over about five months" },
-  { label: "Ghostbloods, book one", value: 27, detail: "second draft" },
-  { label: "Songrise", value: 100, detail: "fourth draft — Riftwake book two" },
-  { label: "Riftwake, book three", value: 57, detail: "first draft" },
+  { label: "Mistborn screenplay", value: 100, detail: "written himself, full time, over about five months", motif: "mist" as const },
+  { label: "Ghostbloods, book one", value: 27, detail: "second draft", motif: "ember" as const },
+  { label: "Songrise", value: 100, detail: "fourth draft — Riftwake book two", motif: "song" as const },
+  { label: "Riftwake, book three", value: 57, detail: "first draft", motif: "rift" as const },
 ];
 
 const RELEASES = [
@@ -51,19 +51,19 @@ export default function WorkbenchPage() {
             written in secret and then handed straight to readers.
           </p>
         </div>
-        <Note className="lg:mb-3 lg:ml-6">
+        <Aside className="lg:mb-3 lg:ml-6">
           I had these as vague stages at first, on the grounds that inventing
           numbers would be dishonest. Wrong instinct &mdash; the number is the
           whole point. A stage can always be argued with. Twenty-seven per cent
           cannot.
-        </Note>
+        </Aside>
       </section>
 
       <section>
         <h2 className="display ruled pb-2 text-[1.5rem]">Brandon&rsquo;s progress</h2>
         <div className="mt-8 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          {PROGRESS.map((p) => (
-            <RingGauge key={p.label} {...p} />
+          {PROGRESS.map((p, i) => (
+            <RingGauge key={p.label} {...p} delay={i * 140} />
           ))}
         </div>
       </section>
@@ -71,15 +71,15 @@ export default function WorkbenchPage() {
       <section>
         <h2 className="display ruled pb-2 text-[1.5rem]">What is coming</h2>
         <div className="mt-6 space-y-6">
-          {RELEASES.map((r, i) => (
+          {RELEASES.map((r) => (
             <article
               key={r.title}
-              className={`sheet p-5 sm:p-6 ${i % 2 ? "tilt-r" : "tilt-l"}`}
+              className="panel p-5 sm:p-6"
             >
               <div className="flex flex-wrap items-baseline justify-between gap-x-5 gap-y-1">
                 <h3 className="text-[1.4rem] leading-tight">{r.title}</h3>
                 <span
-                  className="hand text-[16px]"
+                  className="text-[16px]"
                   style={{ color: r.out ? "var(--ink-faint)" : "var(--brand)" }}
                 >
                   {r.out ? `out — ${r.when.toLowerCase()}` : r.when}
@@ -98,10 +98,10 @@ export default function WorkbenchPage() {
         <div>
           <h2 className="display ruled pb-2 text-[1.5rem]">Off the page</h2>
           <div className="mt-6 space-y-6">
-            <article className="sheet tilt-l p-5 sm:p-6">
+            <article className="panel p-5 sm:p-6">
               <div className="flex flex-wrap items-baseline justify-between gap-x-5 gap-y-1">
                 <h3 className="text-[1.4rem] leading-tight">The cosmere, adapted</h3>
-                <span className="hand text-[16px]" style={{ color: "var(--brand)" }}>
+                <span className="text-[16px]" style={{ color: "var(--brand)" }}>
                   January 2026
                 </span>
               </div>
@@ -112,17 +112,17 @@ export default function WorkbenchPage() {
                 unusually deep for an author: architect of the universe, writing,
                 producing, consulting, with approvals.
               </p>
-              <p className="hand mt-3 text-[16px]">
+              <p className="mt-3 text-[16px]">
                 He wrote the Mistborn screenplay himself, full time, rather than
                 hand it over. Which tells you which of the two jobs he thinks is
                 load-bearing.
               </p>
             </article>
 
-            <article className="sheet tilt-r p-5 sm:p-6">
+            <article className="panel p-5 sm:p-6">
               <div className="flex flex-wrap items-baseline justify-between gap-x-5 gap-y-1">
                 <h3 className="text-[1.4rem] leading-tight">Dragonsteel Nexus</h3>
-                <span className="hand text-[16px]" style={{ color: "var(--brand)" }}>
+                <span className="text-[16px]" style={{ color: "var(--brand)" }}>
                   3&ndash;5 December 2026
                 </span>
               </div>
@@ -132,10 +132,10 @@ export default function WorkbenchPage() {
               </p>
             </article>
 
-            <article className="sheet tilt-l p-5 sm:p-6">
+            <article className="panel p-5 sm:p-6">
               <div className="flex flex-wrap items-baseline justify-between gap-x-5 gap-y-1">
                 <h3 className="text-[1.4rem] leading-tight">Unbroken</h3>
-                <span className="hand text-[16px]" style={{ color: "var(--brand)" }}>
+                <span className="text-[16px]" style={{ color: "var(--brand)" }}>
                   2026
                 </span>
               </div>
@@ -147,11 +147,11 @@ export default function WorkbenchPage() {
           </div>
         </div>
 
-        <Note side="left" className="lg:mt-16">
+        <Aside className="lg:mt-16">
           In a real build none of this page would be kept by hand. It would read
           from whatever feeds the progress bars, so the numbers here move when
           his do.
-        </Note>
+        </Aside>
       </section>
     </div>
   );

@@ -5,7 +5,7 @@ export const metadata = { title: "Systems — Ars Arcanum" };
 
 export default function SystemsPage() {
   return (
-    <div className="space-y-10">
+    <div className="layer-deep space-y-10">
       <section className="max-w-3xl">
         <p className="stamp">Plates</p>
         <h1 className="display mt-3 text-[2.6rem] sm:text-[3.2rem]">

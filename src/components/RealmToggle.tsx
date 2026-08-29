@@ -45,7 +45,7 @@ export default function RealmToggle() {
   return (
     <button
       onClick={() => setRealm(other)}
-      className="hand text-[16px] underline decoration-dotted underline-offset-4 transition hover:text-accent"
+      className="stamp underline decoration-dotted underline-offset-4 transition hover:text-accent"
       aria-label={`Switch to the ${other} realm`}
     >
       {realm === "physical" ? "physical realm" : "cognitive realm"}

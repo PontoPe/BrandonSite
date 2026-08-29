@@ -38,7 +38,7 @@ export default function Shelf() {
               {books.map((b) => {
                 const on = read.has(b.id);
                 return (
-                  <li key={b.id} className="sheet">
+                  <li key={b.id} className="panel">
                     <button
                       onClick={() => !b.forthcoming && toggle(b.id)}
                       disabled={b.forthcoming}

@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function CosmerePage() {
   return (
-    <div className="space-y-16">
+    <div className="layer-deep space-y-16">
       <section className="grid gap-8 lg:grid-cols-[minmax(0,42rem)_1fr] lg:items-end">
         <div>
           <p className="stamp">Third layer &middot; for readers already in</p>

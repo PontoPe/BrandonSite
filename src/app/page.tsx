@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Note from "@/components/Note";
+import Aside from "@/components/Aside";
 import Portrait from "@/components/Portrait";
 import RingGauge from "@/components/RingGauge";
 import { KIND_LABEL, POSTS } from "@/data/posts";
@@ -15,10 +15,10 @@ import { KIND_LABEL, POSTS } from "@/data/posts";
  */
 
 const PROGRESS = [
-  { label: "Mistborn screenplay", value: 100, detail: "written himself, full time" },
-  { label: "Ghostbloods, book one", value: 27, detail: "second draft" },
-  { label: "Songrise", value: 100, detail: "fourth draft" },
-  { label: "Riftwake, book three", value: 57, detail: "first draft" },
+  { label: "Mistborn screenplay", value: 100, detail: "written himself, full time", motif: "mist" as const },
+  { label: "Ghostbloods, book one", value: 27, detail: "second draft", motif: "ember" as const },
+  { label: "Songrise", value: 100, detail: "fourth draft", motif: "song" as const },
+  { label: "Riftwake, book three", value: 57, detail: "first draft", motif: "rift" as const },
 ];
 
 const ENTRANCES = [
@@ -79,12 +79,12 @@ export default function Home() {
           >
             <p className="stamp">What he is working on, right now</p>
             <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-4">
-              {PROGRESS.map((p) => (
-                <RingGauge key={p.label} {...p} />
+              {PROGRESS.map((p, i) => (
+                <RingGauge key={p.label} {...p} delay={i * 140} />
               ))}
             </div>
             <p
-              className="hand mt-6 text-[15px]"
+              className="mt-6 text-[15px]"
               style={{ color: "var(--panel-dim)" }}
             >
               Published percentages on books nobody can read yet. He has done
@@ -98,8 +98,8 @@ export default function Home() {
       <section>
         <h2 className="display ruled pb-2 text-[1.5rem]">This week</h2>
         <div className="mt-6 grid gap-6 lg:grid-cols-3">
-          <article className="sheet tilt-l p-6 lg:col-span-2">
-            <p className="hand text-[16px]" style={{ color: "var(--brand)" }}>
+          <article className="panel p-6 lg:col-span-2">
+            <p className="text-[16px]" style={{ color: "var(--brand)" }}>
               1 September 2026 &mdash; three days away
             </p>
             <h3 className="mt-2 text-[1.8rem] leading-tight">Blightfall</h3>
@@ -112,8 +112,8 @@ export default function Home() {
             </p>
           </article>
 
-          <article className="sheet tilt-r p-6">
-            <p className="hand text-[16px]" style={{ color: "var(--brand)" }}>
+          <article className="panel p-6">
+            <p className="text-[16px]" style={{ color: "var(--brand)" }}>
               January 2026
             </p>
             <h3 className="mt-2 text-[1.4rem] leading-tight">
@@ -136,7 +136,7 @@ export default function Home() {
             All posts &rarr;
           </Link>
         </div>
-        <article className="sheet tilt-r mt-6 overflow-hidden">
+        <article className="panel mt-6 overflow-hidden">
           <div className="grid lg:grid-cols-[1.15fr_1fr]">
             <Portrait
               src={POSTS[0].thumb ?? "/weekly-update-thumb.webp"}
@@ -148,7 +148,7 @@ export default function Home() {
                 <span className="stamp" style={{ color: "var(--brand)" }}>
                   {KIND_LABEL[POSTS[0].kind]}
                 </span>
-                <time className="hand text-[15px] text-ink-faint" dateTime={POSTS[0].iso}>
+                <time className="text-[15px] text-ink-faint" dateTime={POSTS[0].iso}>
                   {POSTS[0].date}
                 </time>
               </div>
@@ -206,11 +206,11 @@ export default function Home() {
             className="aspect-[4/5] w-full"
             caption="Utah, where the whole operation is run from."
           />
-          <Note>
+          <Aside>
             Worth saying plainly: the reason to start here rather than with the
             shared universe is that not one of these books requires the others.
             The connections are a reward, not a prerequisite.
-          </Note>
+          </Aside>
         </div>
       </section>
 
@@ -223,10 +223,10 @@ export default function Home() {
           wrong.
         </p>
         <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {ENTRANCES.map((e, i) => (
+          {ENTRANCES.map((e) => (
             <article
               key={e.title}
-              className={`sheet p-5 ${i % 2 ? "tilt-r" : "tilt-l"}`}
+              className="panel p-5"
             >
               <p className="stamp">{e.who}</p>
               <h3 className="mt-2 text-[1.25rem] leading-snug">{e.title}</h3>
@@ -276,7 +276,7 @@ export default function Home() {
             </p>
           </div>
           <p
-            className="hand text-[16px] lg:justify-self-end lg:text-right"
+            className="text-[16px] lg:justify-self-end lg:text-right"
             style={{ color: "var(--panel-dim)" }}
           >
             Nothing below this line is required.

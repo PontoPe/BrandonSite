@@ -71,7 +71,7 @@ export default function WorkshopPage() {
 
       <section className="space-y-6">
         {LAWS.map((law) => (
-          <article key={law.n} className="sheet p-6">
+          <article key={law.n} className="panel p-6">
             <p className="stamp">{law.n} law</p>
             <blockquote className="mt-3 max-w-3xl border-l-2 border-accent pl-4 text-[19px] leading-snug">
               {law.statement}
@@ -91,7 +91,7 @@ export default function WorkshopPage() {
         <h2 className="display ruled pb-2 text-[1.5rem]">The shape of a book</h2>
         <dl className="mt-4 grid gap-5 sm:grid-cols-2">
           {STRUCTURE.map((s) => (
-            <div key={s.term} className="sheet p-5">
+            <div key={s.term} className="panel p-5">
               <dt className="text-lg">{s.term}</dt>
               <dd className="mt-2 text-[15px] leading-relaxed text-ink-soft">
                 {s.body}

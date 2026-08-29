@@ -51,25 +51,22 @@ export default function Portrait({
             style={{ minHeight: "18rem" }}
           >
             <svg viewBox="0 0 160 200" className="h-full w-full max-h-72" aria-hidden>
-              <g
-                stroke="var(--pencil)"
-                fill="none"
-                strokeLinecap="round"
-                strokeDasharray="5 7"
-                strokeWidth="1.3"
-                opacity="0.8"
-              >
-                <circle cx="80" cy="70" r="34" />
-                <path d="M26 200 C26 146 44 118 80 118 C116 118 134 146 134 200" />
-                <path d="M8 8 H152 V192 H8 Z" strokeDasharray="3 9" opacity="0.5" />
+              <g stroke="var(--rule-strong)" fill="none" strokeWidth="1">
+                <path d="M0.5 0.5 H159.5 V199.5 H0.5 Z" />
+                <path d="M0.5 0.5 L159.5 199.5 M159.5 0.5 L0.5 199.5" opacity="0.35" />
               </g>
               <text
                 x="80"
-                y="196"
+                y="106"
                 textAnchor="middle"
-                style={{ fontFamily: "var(--font-hand)", fontSize: 11, fill: "var(--pencil)" }}
+                style={{
+                  fontFamily: "var(--font-tech)",
+                  fontSize: 8,
+                  letterSpacing: "0.14em",
+                  fill: "var(--ink-faint)",
+                }}
               >
-                {src.replace("/", "")}
+                {src.replace("/", "").toUpperCase()}
               </text>
             </svg>
           </div>
@@ -86,7 +83,9 @@ export default function Portrait({
           />
         )}
       </div>
-      {caption && <figcaption className="hand mt-2 text-[15px]">{caption}</figcaption>}
+      {caption && <figcaption className="mt-2 text-[15px] italic text-ink-faint">
+          {caption}
+        </figcaption>}
     </figure>
   );
 }
