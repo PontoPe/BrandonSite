@@ -26,6 +26,7 @@ const hand = Architects_Daughter({
 });
 import { ReadingProvider } from "@/lib/reading";
 import RealmToggle from "@/components/RealmToggle";
+import StormBackdrop from "@/components/StormBackdrop";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -73,6 +74,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
       </head>
       <body className="relative z-10 flex min-h-full flex-col">
+        <StormBackdrop />
         <ReadingProvider>
           <header className="sticky top-0 z-30 border-b border-rule bg-stock/92 backdrop-blur">
             <div className="mx-auto flex max-w-6xl flex-wrap items-baseline gap-x-7 gap-y-2 px-5 py-3">

@@ -205,13 +205,13 @@ export default function Atlas() {
             <g>
               <text
                 x="46"
-                y="548"
+                y="58"
                 style={{ fontFamily: "var(--font-hand)", fontSize: 17, fill: "var(--ink-faint)" }}
               >
                 Nothing inked yet. I have only blocked in where things sit.
               </text>
               <path
-                d="M44 556 Q170 562 300 554"
+                d="M44 66 Q170 72 300 64"
                 fill="none"
                 stroke="var(--ink-faint)"
                 strokeWidth="0.7"

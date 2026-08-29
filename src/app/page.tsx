@@ -2,6 +2,7 @@ import Link from "next/link";
 import Aside from "@/components/Aside";
 import Portrait from "@/components/Portrait";
 import RingGauge from "@/components/RingGauge";
+import VorinGlyph from "@/components/VorinGlyph";
 import { KIND_LABEL, POSTS } from "@/data/posts";
 
 /**
@@ -36,8 +37,13 @@ export default function Home() {
   return (
     <div className="space-y-20">
       {/* ---- The jacket ---- */}
-      <section className="ink-panel -mx-5 px-5 py-14 sm:px-10 sm:py-16">
-        <div className="mx-auto max-w-6xl">
+      <section className="ink-panel relative -mx-5 overflow-hidden px-5 py-14 sm:px-10 sm:py-16">
+        {/* A glyphward burning behind his name. */}
+        <div className="glyphward">
+          <VorinGlyph variant={0} className="glyphward__base" />
+          <VorinGlyph variant={0} className="glyphward__ember" />
+        </div>
+        <div className="relative mx-auto max-w-6xl">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,32rem)_1fr] lg:items-center">
             <div>
               <p className="stamp">Novelist &middot; Utah</p>

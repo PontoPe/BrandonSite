@@ -312,6 +312,105 @@ html[data-realm="cognitive"] .sheet {
   .motif-ember-glow, .motif-ember-lines { animation: none; }
 }
 
+/* A glyphward is a prayer that gets burned. This one smoulders: a warm band
+   travels up through a second copy of the glyph, so the emblem behind his name
+   is always part-alight. */
+.glyphward {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+/* Anchored behind the headline rather than centred, where it fell in the seam
+   between the text and the photograph and cut across the progress rings. */
+.glyphward__base,
+.glyphward__ember {
+  position: absolute;
+  top: 30%;
+  left: 31%;
+  width: min(44%, 24rem);
+  transform: translate(-50%, -50%);
+}
+@media (max-width: 1024px) {
+  .glyphward__base,
+  .glyphward__ember {
+    top: 30%;
+    left: 62%;
+    width: min(70%, 22rem);
+  }
+}
+.glyphward__base { color: var(--panel-fg); opacity: 0.08; }
+.glyphward__ember {
+  color: var(--brand);
+  /* Kept below the point where the travelling band starts fighting the body
+     text it passes behind. */
+  opacity: 0.36;
+  -webkit-mask-image: linear-gradient(to top, transparent 38%, #000 50%, transparent 62%);
+  mask-image: linear-gradient(to top, transparent 38%, #000 50%, transparent 62%);
+  -webkit-mask-size: 100% 320%;
+  mask-size: 100% 320%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  animation: glyphward-burn 17s linear infinite;
+}
+@keyframes glyphward-burn {
+  from { -webkit-mask-position: 0 128%; mask-position: 0 128%; }
+  to   { -webkit-mask-position: 0 -28%; mask-position: 0 -28%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .glyphward__ember { animation: none; opacity: 0.22; }
+}
+
+/* ---------------------------------------------------------------------------
+   The storm backdrop. Sits behind everything, catches nothing.
+   --------------------------------------------------------------------------- */
+
+.storm-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  color: var(--ink);
+  opacity: 0.055;
+}
+html[data-realm="cognitive"] .storm-backdrop {
+  color: var(--accent-bright);
+  opacity: 0.075;
+}
+
+@keyframes storm-cross {
+  from { transform: translateX(-6%); }
+  to   { transform: translateX(6%); }
+}
+.storm-sweeps > path {
+  animation-name: storm-cross;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.storm-glyph {
+  position: absolute;
+  color: var(--ink);
+}
+.storm-glyph--a {
+  width: min(46vw, 620px);
+  top: -8vh;
+  right: -9vw;
+  transform: rotate(6deg);
+}
+.storm-glyph--b {
+  width: min(34vw, 460px);
+  bottom: -12vh;
+  left: -7vw;
+  transform: rotate(-8deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .storm-sweeps > path { animation: none; }
+}
+
 /* Feathered edges, for a photograph that shares a ground with the panel behind
    it. Fades the inner and lower edges so the picture resolves into the jacket
    instead of sitting on it inside a visible rectangle. */
