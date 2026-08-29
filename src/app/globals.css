@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------
+   Ars Arcanum — design tokens
+   Physical realm  : ink on paper stock. Legible, technical, calm.
+   Cognitive realm : the dark beneath. Obsidian beads and cold light.
+   --------------------------------------------------------------- */
+
+:root {
+  --stock:        #f4f1ea;
+  --stock-raised: #faf8f3;
+  --stock-sunk:   #e8e3d8;
+  --ink:          #191713;
+  --ink-soft:     #4a453c;
+  --ink-faint:    #8b8377;
+  --rule:         #d4cdbe;
+  --rule-strong:  #b3a992;
+
+  /* one metallic accent — electrum, not fantasy gold */
+  --accent:       #8a6f2e;
+  --accent-bright:#b8933f;
+  --accent-wash:  #efe6cd;
+
+  --veiled:       #c3bcae;   /* things you have not yet earned */
+  --revealed:     #2f6f6a;   /* things a book has opened for you */
+
+  --font-prose: ui-serif, Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
+  --font-ui: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-tech: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+html[data-realm="cognitive"] {
+  --stock:        #0b0e14;
+  --stock-raised: #131822;
+  --stock-sunk:   #070910;
+  --ink:          #e6e9f0;
+  --ink-soft:     #a3abbd;
+  --ink-faint:    #626b80;
+  --rule:         #232b3a;
+  --rule-strong:  #36415a;
+
+  --accent:       #c9a94e;
+  --accent-bright:#e5c977;
+  --accent-wash:  #1c1f28;
+
+  --veiled:       #2a3140;
+  --revealed:     #4fd1c5;
+}
+
+@theme inline {
+  --color-stock: var(--stock);
+  --color-stock-raised: var(--stock-raised);
+  --color-stock-sunk: var(--stock-sunk);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-rule: var(--rule);
+  --color-rule-strong: var(--rule-strong);
+  --color-accent: var(--accent);
+  --color-accent-bright: var(--accent-bright);
+  --color-accent-wash: var(--accent-wash);
+  --color-veiled: var(--veiled);
+  --color-revealed: var(--revealed);
+  --font-prose: var(--font-prose);
+  --font-ui: var(--font-ui);
+  --font-tech: var(--font-tech);
+}
+
+html {
+  color-scheme: light;
+}
+html[data-realm="cognitive"] {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--stock);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  transition: background-color 400ms ease, color 400ms ease;
+}
+
+/* The technical label voice used throughout the Ars Arcanum plates */
+.label {
+  font-family: var(--font-tech);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.prose-serif {
+  font-family: var(--font-prose);
+}
+
+/* Fine paper grain, only in the physical realm */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+  background-image: radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.045) 1px, transparent 0);
+  background-size: 4px 4px;
+}
+html[data-realm="cognitive"] body::before {
+  opacity: 0.35;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
