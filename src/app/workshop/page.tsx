@@ -52,8 +52,10 @@ export default function WorkshopPage() {
     <div className="space-y-14">
       <section className="max-w-3xl">
         <p className="stamp">Craft</p>
-        <h1 className="mt-2 text-4xl leading-tight">
-          He gives the method away
+        <h1 className="display mt-3 text-[2.6rem] sm:text-[3.2rem]">
+          He gives the
+          <br />
+          method away
         </h1>
         <p className="mt-5 text-[17px] leading-relaxed text-ink-soft">
           The lectures are free, the annotations are published chapter by
@@ -86,9 +88,7 @@ export default function WorkshopPage() {
       </section>
 
       <section>
-        <h2 className="border-b border-rule pb-2 text-2xl">
-          The shape of a book
-        </h2>
+        <h2 className="display ruled pb-2 text-[1.5rem]">The shape of a book</h2>
         <dl className="mt-4 grid gap-5 sm:grid-cols-2">
           {STRUCTURE.map((s) => (
             <div key={s.term} className="sheet p-5">
@@ -102,7 +102,7 @@ export default function WorkshopPage() {
       </section>
 
       <section className="max-w-3xl">
-        <h2 className="text-2xl">On the prose</h2>
+        <h2 className="display ruled pb-2 text-[1.5rem]">On the prose</h2>
         <p className="mt-3 text-[16px] leading-relaxed text-ink-soft">
           The sentences are plain, quick and cinematic, and critics have never
           been shy about it. That is a trade rather than an oversight: the prose

@@ -18,6 +18,7 @@ export type Line =
   | "standalone-cosmere"
   | "collections"
   | "skyward"
+  | "riftwake"
   | "reckoners"
   | "other-non-cosmere"
   | "wheel-of-time";
@@ -96,6 +97,12 @@ export const LINES: LineMeta[] = [
     blurb: "A pilot, a derelict starfighter, and a sky that is not what it seems.",
   },
   {
+    id: "riftwake",
+    title: "Riftwake",
+    cosmere: false,
+    blurb: "The Cytoverse after the war, with Skyward Flight sent somewhere far less certain.",
+  },
+  {
     id: "reckoners",
     title: "The Reckoners",
     cosmere: false,
@@ -161,6 +168,9 @@ export const BOOKS: Book[] = [
   { id: "starsight", title: "Starsight", year: 2019, seq: 2, line: "skyward", cosmere: false, kind: "novel" },
   { id: "cytonic", title: "Cytonic", year: 2021, seq: 3, line: "skyward", cosmere: false, kind: "novel" },
   { id: "defiant", title: "Defiant", year: 2023, seq: 4, line: "skyward", cosmere: false, kind: "novel" },
+
+  { id: "blightfall", title: "Blightfall", year: 2026, seq: 1, line: "riftwake", cosmere: false, kind: "novel", forthcoming: true, note: "With Janci Patterson. A diplomatic escort that arrives at a world half swallowed by invasive forest." },
+  { id: "songrise", title: "Songrise", year: 2027, seq: 2, line: "riftwake", cosmere: false, kind: "novel", forthcoming: true, note: "With Janci Patterson." },
 
   { id: "steelheart", title: "Steelheart", year: 2013, seq: 1, line: "reckoners", cosmere: false, kind: "novel" },
   { id: "firefight", title: "Firefight", year: 2015, seq: 2, line: "reckoners", cosmere: false, kind: "novel" },

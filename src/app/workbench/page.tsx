@@ -1,168 +1,158 @@
+import Note from "@/components/Note";
+import RingGauge from "@/components/RingGauge";
+
 export const metadata = { title: "Workbench — Ars Arcanum" };
 
 /**
- * The progress bar is the single most recognisable piece of UI in this author's
- * public life, and it is earned rather than decorative. Rather than invent
- * percentages, each bar is driven by a named milestone — which is what the
- * public updates actually report.
+ * Percentages, not milestones.
+ *
+ * An earlier pass here used named stages because inventing numbers felt
+ * dishonest. That was the wrong call: he publishes real percentages on
+ * unfinished books, and has for years. The number is the point — it is what
+ * makes the unfinished work public rather than rumoured. Figures below are as
+ * reported on the author's own progress bars, August 2026.
  */
-const STAGES = ["Outlining", "Drafting", "Revision", "Production", "Out"] as const;
-type Stage = (typeof STAGES)[number];
-
-interface Project {
-  title: string;
-  line: string;
-  stage: Stage;
-  when: string;
-  note: string;
-}
-
-const PROJECTS: Project[] = [
-  {
-    title: "Isles of the Emberdark",
-    line: "Cosmere standalone",
-    stage: "Out",
-    when: "February 2026",
-    note: "Grew out of the secret-project route rather than the traditional one — written, funded and shipped largely outside the usual publishing path.",
-  },
-  {
-    title: "Tailored Realities",
-    line: "Collection",
-    stage: "Production",
-    when: "December 2026",
-    note: "Gathered shorter work. Collections have historically been where the connective tissue gets spelled out.",
-  },
-  {
-    title: "Ghostbloods, Book One",
-    line: "Mistborn, third era",
-    stage: "Revision",
-    when: "Targeted 2028",
-    note: "First draft finished in January 2026. Set roughly fifty to seventy years after The Lost Metal — an eighties-flavoured thriller with early computers. All three books are intended to be written before the first one publishes.",
-  },
-  {
-    title: "The Stormlight Archive, back five",
-    line: "Roshar",
-    stage: "Outlining",
-    when: "After the break",
-    note: "Wind and Truth closed the first arc in 2024. The second five are meant to sit on the far side of a deliberate pause.",
-  },
+const PROGRESS = [
+  { label: "Mistborn screenplay", value: 100, detail: "written himself, full time, over about five months" },
+  { label: "Ghostbloods, book one", value: 27, detail: "second draft" },
+  { label: "Songrise", value: 100, detail: "fourth draft — Riftwake book two" },
+  { label: "Riftwake, book three", value: 57, detail: "first draft" },
 ];
 
-const EVENTS = [
-  {
-    label: "Unbroken",
-    detail:
-      "A charity anthology on Kickstarter, in the line of Unfettered before it, carrying part of a forthcoming story.",
-    when: "2026",
-  },
-  {
-    label: "Dragonsteel Nexus",
-    detail:
-      "The house convention, run by his own publishing operation. Badges by drawing rather than a queue.",
-    when: "3–5 December 2026",
-  },
+const RELEASES = [
+  { title: "Isles of the Emberdark", when: "February 2026", line: "Cosmere standalone", out: true,
+    note: "Came up through the secret-project route rather than the traditional one — written, funded and shipped largely outside the usual publishing path." },
+  { title: "Blightfall", when: "1 September 2026", line: "Riftwake, book one · with Janci Patterson",
+    note: "The Cytoverse after the war. Skyward Flight is sent on a diplomatic escort and arrives at a world half swallowed by invasive forest, ringed with drifting wreckage." },
+  { title: "Tailored Realities", when: "December 2026", line: "Collection",
+    note: "Gathered shorter work. Collections have historically been where the connective tissue gets spelled out." },
+  { title: "Songrise", when: "Summer 2027", line: "Riftwake, book two · with Janci Patterson",
+    note: "Fourth draft already done, which is why it sits at a hundred per cent while its release is still a year out." },
+  { title: "Ghostbloods, book one", when: "Targeted 2028", line: "Mistborn, third era",
+    note: "Fifty to seventy years after The Lost Metal — an eighties-flavoured thriller with early computers. All three books are meant to be written before the first one publishes." },
 ];
-
-function Bar({ stage }: { stage: Stage }) {
-  const index = STAGES.indexOf(stage);
-  return (
-    <div>
-      <div className="flex gap-px" role="img" aria-label={`Stage: ${stage}`}>
-        {STAGES.map((s, i) => (
-          <span
-            key={s}
-            className="h-2 flex-1"
-            style={{
-              background:
-                i < index
-                  ? "var(--accent)"
-                  : i === index
-                    ? "var(--accent-bright)"
-                    : "var(--stock-sunk)",
-            }}
-          />
-        ))}
-      </div>
-      <div className="mt-1 flex justify-between">
-        {STAGES.map((s) => (
-          <span
-            key={s}
-            className="stamp"
-            style={{
-              fontSize: "0.5625rem",
-              color: s === stage ? "var(--accent)" : undefined,
-            }}
-          >
-            {s}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 export default function WorkbenchPage() {
   return (
-    <div className="space-y-14">
-      <section className="max-w-3xl">
-        <p className="stamp">In progress</p>
-        <h1 className="mt-2 text-4xl leading-tight">
-          The work, while it is still work
-        </h1>
-        <p className="mt-5 text-[17px] leading-relaxed text-ink-soft">
-          Most author sites treat the unfinished book as a rumour. Here it is the
-          headline, because radical visibility into the drafting is genuinely
-          part of how this career runs — public progress, an annual state-of-things
-          post, four novels written in secret and then handed straight to readers.
-        </p>
-        <p className="mt-4 text-[17px] leading-relaxed text-ink-soft">
-          Bars advance by named milestone rather than invented percentages,
-          because a milestone is a thing that can be reported honestly.
-        </p>
-      </section>
-
-      <section className="space-y-6">
-        {PROJECTS.map((p) => (
-          <article key={p.title} className="sheet p-5">
-            <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-              <h2 className="text-xl">{p.title}</h2>
-              <span className="stamp">{p.when}</span>
-            </div>
-            <p className="stamp mt-1">{p.line}</p>
-            <div className="mt-4 max-w-xl">
-              <Bar stage={p.stage} />
-            </div>
-            <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-ink-soft">
-              {p.note}
-            </p>
-          </article>
-        ))}
+    <div className="space-y-16">
+      <section className="grid gap-8 lg:grid-cols-[minmax(0,40rem)_1fr] lg:items-end">
+        <div>
+          <p className="stamp">In progress</p>
+          <h1 className="display mt-3 text-[2.6rem] sm:text-[3.2rem]">
+            The work, while
+            <br />
+            it is still work
+          </h1>
+          <p className="mt-6 text-[18px] leading-relaxed text-ink-soft">
+            Most author sites treat the unfinished book as a rumour. Here it is
+            the headline, because publishing the percentage on a book nobody can
+            read yet is genuinely part of how this career runs &mdash; alongside
+            the weekly video, the annual state-of-things post, and four novels
+            written in secret and then handed straight to readers.
+          </p>
+        </div>
+        <Note className="lg:mb-3 lg:ml-6">
+          I had these as vague stages at first, on the grounds that inventing
+          numbers would be dishonest. Wrong instinct &mdash; the number is the
+          whole point. A stage can always be argued with. Twenty-seven per cent
+          cannot.
+        </Note>
       </section>
 
       <section>
-        <h2 className="border-b border-rule pb-2 text-2xl">
-          Off the page
-        </h2>
-        <ul className="mt-4 grid gap-5 sm:grid-cols-2">
-          {EVENTS.map((e) => (
-            <li key={e.label} className="sheet p-5">
-              <div className="flex items-baseline justify-between gap-3">
-                <h3 className="text-lg">{e.label}</h3>
-                <span className="stamp">{e.when}</span>
-              </div>
-              <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">
-                {e.detail}
-              </p>
-            </li>
+        <h2 className="display ruled pb-2 text-[1.5rem]">Brandon&rsquo;s progress</h2>
+        <div className="mt-8 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          {PROGRESS.map((p) => (
+            <RingGauge key={p.label} {...p} />
           ))}
-        </ul>
+        </div>
       </section>
 
-      <p className="stamp max-w-2xl leading-relaxed">
-        Status as publicly reported, August 2026. In a real build this page would
-        read from the same source as the annual update rather than being kept by
-        hand.
-      </p>
+      <section>
+        <h2 className="display ruled pb-2 text-[1.5rem]">What is coming</h2>
+        <div className="mt-6 space-y-6">
+          {RELEASES.map((r, i) => (
+            <article
+              key={r.title}
+              className={`sheet p-5 sm:p-6 ${i % 2 ? "tilt-r" : "tilt-l"}`}
+            >
+              <div className="flex flex-wrap items-baseline justify-between gap-x-5 gap-y-1">
+                <h3 className="text-[1.4rem] leading-tight">{r.title}</h3>
+                <span
+                  className="hand text-[16px]"
+                  style={{ color: r.out ? "var(--ink-faint)" : "var(--brand)" }}
+                >
+                  {r.out ? `out — ${r.when.toLowerCase()}` : r.when}
+                </span>
+              </div>
+              <p className="stamp mt-1">{r.line}</p>
+              <p className="mt-3 max-w-2xl text-[16px] leading-relaxed text-ink-soft">
+                {r.note}
+              </p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-start">
+        <div>
+          <h2 className="display ruled pb-2 text-[1.5rem]">Off the page</h2>
+          <div className="mt-6 space-y-6">
+            <article className="sheet tilt-l p-5 sm:p-6">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-5 gap-y-1">
+                <h3 className="text-[1.4rem] leading-tight">The cosmere, adapted</h3>
+                <span className="hand text-[16px]" style={{ color: "var(--brand)" }}>
+                  January 2026
+                </span>
+              </div>
+              <p className="mt-3 max-w-2xl text-[16px] leading-relaxed text-ink-soft">
+                Apple took rights to the whole connected universe &mdash; not one
+                series, all of it. Mistborn goes first as a theatrical feature,
+                with Stormlight as a show after it. His own involvement is
+                unusually deep for an author: architect of the universe, writing,
+                producing, consulting, with approvals.
+              </p>
+              <p className="hand mt-3 text-[16px]">
+                He wrote the Mistborn screenplay himself, full time, rather than
+                hand it over. Which tells you which of the two jobs he thinks is
+                load-bearing.
+              </p>
+            </article>
+
+            <article className="sheet tilt-r p-5 sm:p-6">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-5 gap-y-1">
+                <h3 className="text-[1.4rem] leading-tight">Dragonsteel Nexus</h3>
+                <span className="hand text-[16px]" style={{ color: "var(--brand)" }}>
+                  3&ndash;5 December 2026
+                </span>
+              </div>
+              <p className="mt-3 max-w-2xl text-[16px] leading-relaxed text-ink-soft">
+                The house convention, run by his own publishing operation rather
+                than a licensor. Badges by drawing rather than a queue.
+              </p>
+            </article>
+
+            <article className="sheet tilt-l p-5 sm:p-6">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-5 gap-y-1">
+                <h3 className="text-[1.4rem] leading-tight">Unbroken</h3>
+                <span className="hand text-[16px]" style={{ color: "var(--brand)" }}>
+                  2026
+                </span>
+              </div>
+              <p className="mt-3 max-w-2xl text-[16px] leading-relaxed text-ink-soft">
+                A charity anthology on Kickstarter, in the line of Unfettered
+                before it, carrying part of a story not yet published elsewhere.
+              </p>
+            </article>
+          </div>
+        </div>
+
+        <Note side="left" className="lg:mt-16">
+          In a real build none of this page would be kept by hand. It would read
+          from whatever feeds the progress bars, so the numbers here move when
+          his do.
+        </Note>
+      </section>
     </div>
   );
 }

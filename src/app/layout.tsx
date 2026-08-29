@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
-import { EB_Garamond, Architects_Daughter } from "next/font/google";
+import { Archivo, EB_Garamond, Architects_Daughter } from "next/font/google";
 import "./globals.css";
+
+/** The cover hand: the imprint's own voice, for headings only. */
+const display = Archivo({
+  variable: "--font-display-face",
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  display: "swap",
+});
 
 /** The book hand: what the text of these novels is set in. */
 const garamond = EB_Garamond({
@@ -38,7 +46,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${garamond.variable} ${hand.variable} h-full antialiased`}
+      className={`${display.variable} ${garamond.variable} ${hand.variable} h-full antialiased`}
     >
       <head>
         {/* Settle the realm before first paint so nobody sees the wrong one flash. */}
@@ -52,7 +60,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <ReadingProvider>
           <header className="sticky top-0 z-30 border-b border-rule bg-stock/92 backdrop-blur">
             <div className="mx-auto flex max-w-6xl flex-wrap items-baseline gap-x-7 gap-y-2 px-5 py-3">
-              <Link href="/" className="text-[22px] italic leading-none">
+              <Link href="/" className="flex items-baseline gap-2 text-[22px] italic leading-none">
+                <span aria-hidden className="not-italic" style={{ color: "var(--brand)" }}>
+                  &#9670;
+                </span>
                 Ars&nbsp;Arcanum
               </Link>
               <nav className="flex flex-wrap items-baseline gap-x-5 gap-y-1">

@@ -8,8 +8,10 @@ export default function SystemsPage() {
     <div className="space-y-10">
       <section className="max-w-3xl">
         <p className="stamp">Plates</p>
-        <h1 className="mt-2 text-4xl leading-tight">
-          Magic that behaves like engineering
+        <h1 className="display mt-3 text-[2.6rem] sm:text-[3.2rem]">
+          Magic that behaves
+          <br />
+          like engineering
         </h1>
         <p className="mt-5 text-[17px] leading-relaxed text-ink-soft">
           Every one of these books ends in a chart. The Ars Arcanum is an
@@ -27,7 +29,7 @@ export default function SystemsPage() {
 
       <section className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_22rem]">
         <div className="max-w-2xl">
-          <h2 className="text-2xl">More plates to come</h2>
+          <h2 className="display ruled pb-2 text-[1.5rem]">More plates to come</h2>
           <p className="mt-3 text-[16px] leading-relaxed text-ink-soft">
             The Double Eye and its ten orders, each with two Surges and an oath
             ladder. The Aons, which are drawn rather than cast, and fail when a

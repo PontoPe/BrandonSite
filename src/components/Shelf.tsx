@@ -16,7 +16,7 @@ export default function Shelf() {
           <section key={line.id}>
             <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-rule pb-2">
               <div>
-                <h2 className="text-2xl">{line.title}</h2>
+                <h2 className="display text-[1.5rem]">{line.title}</h2>
                 <p className="mt-1 text-[15px] text-ink-soft">
                   {line.blurb}
                 </p>

@@ -30,8 +30,10 @@ export default function LibraryPage() {
     <div className="space-y-14">
       <section className="max-w-3xl">
         <p className="stamp">The shelves</p>
-        <h1 className="mt-2 text-4xl leading-tight">
-          Four front doors, none of them wrong
+        <h1 className="display mt-3 text-[2.6rem] sm:text-[3.2rem]">
+          Four front doors,
+          <br />
+          none of them wrong
         </h1>
         <p className="mt-5 text-[17px] leading-relaxed text-ink-soft">
           Reading-order guides tend to hand you one queue and imply you have
