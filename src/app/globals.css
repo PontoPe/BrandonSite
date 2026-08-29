@@ -1,50 +1,59 @@
 @import "tailwindcss";
 
-/* ---------------------------------------------------------------
-   Ars Arcanum — design tokens
-   Physical realm  : ink on paper stock. Legible, technical, calm.
-   Cognitive realm : the dark beneath. Obsidian beads and cold light.
-   --------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------
+   Ars Arcanum
+
+   Modelled on the in-world field notebook that closes these novels: pencil
+   under-sketch, ink over the top, a scholar's hand in the margins, and paper
+   that has been carried around. Nothing should sit perfectly square on a grid.
+   --------------------------------------------------------------------------- */
 
 :root {
-  --stock:        #f4f1ea;
-  --stock-raised: #faf8f3;
-  --stock-sunk:   #e8e3d8;
-  --ink:          #191713;
-  --ink-soft:     #4a453c;
-  --ink-faint:    #8b8377;
-  --rule:         #d4cdbe;
-  --rule-strong:  #b3a992;
+  --stock:        #ece5d5;
+  --stock-raised: #f3ecdd;
+  --stock-sunk:   #ded4bd;
+  --ink:          #23201a;
+  --ink-soft:     #4e473c;
+  --ink-faint:    #857c6d;
+  --pencil:       #9d9584;
+  --rule:         #cdc2a9;
+  --rule-strong:  #ab9d80;
 
-  /* one metallic accent — electrum, not fantasy gold */
-  --accent:       #8a6f2e;
-  --accent-bright:#b8933f;
-  --accent-wash:  #efe6cd;
+  --accent:       #7d5a1f;
+  --accent-bright: #a97f2c;
+  --accent-wash:  #e3d7ba;
 
-  --veiled:       #c3bcae;   /* things you have not yet earned */
-  --revealed:     #2f6f6a;   /* things a book has opened for you */
+  --veiled:       #b3aa96;
+  --revealed:     #3d6b58;
 
-  --font-prose: ui-serif, Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
-  --font-ui: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-tech: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --grain-opacity: 0.55;
+  --wash-opacity: 0.5;
+
+  --font-prose: var(--font-prose-face), ui-serif, Georgia, serif;
+  --font-hand: var(--font-hand-face), "Segoe Print", "Bradley Hand", cursive;
+  --font-tech: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
 html[data-realm="cognitive"] {
-  --stock:        #0b0e14;
-  --stock-raised: #131822;
-  --stock-sunk:   #070910;
-  --ink:          #e6e9f0;
-  --ink-soft:     #a3abbd;
-  --ink-faint:    #626b80;
-  --rule:         #232b3a;
-  --rule-strong:  #36415a;
+  --stock:        #12151c;
+  --stock-raised: #191d27;
+  --stock-sunk:   #0b0d13;
+  --ink:          #e9e4d7;
+  --ink-soft:     #a9a294;
+  --ink-faint:    #797264;
+  --pencil:       #4d5666;
+  --rule:         #2b3140;
+  --rule-strong:  #414a5e;
 
-  --accent:       #c9a94e;
-  --accent-bright:#e5c977;
-  --accent-wash:  #1c1f28;
+  --accent:       #c8a54e;
+  --accent-bright: #e3c67c;
+  --accent-wash:  #20242f;
 
-  --veiled:       #2a3140;
-  --revealed:     #4fd1c5;
+  --veiled:       #333b4b;
+  --revealed:     #58c3ad;
+
+  --grain-opacity: 0.3;
+  --wash-opacity: 0.22;
 }
 
 @theme inline {
@@ -54,6 +63,7 @@ html[data-realm="cognitive"] {
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-ink-faint: var(--ink-faint);
+  --color-pencil: var(--pencil);
   --color-rule: var(--rule);
   --color-rule-strong: var(--rule-strong);
   --color-accent: var(--accent);
@@ -62,51 +72,134 @@ html[data-realm="cognitive"] {
   --color-veiled: var(--veiled);
   --color-revealed: var(--revealed);
   --font-prose: var(--font-prose);
-  --font-ui: var(--font-ui);
+  --font-hand: var(--font-hand);
   --font-tech: var(--font-tech);
 }
 
-html {
-  color-scheme: light;
-}
-html[data-realm="cognitive"] {
-  color-scheme: dark;
-}
+html { color-scheme: light; }
+html[data-realm="cognitive"] { color-scheme: dark; }
 
 body {
-  background: var(--stock);
+  background-color: var(--stock);
   color: var(--ink);
-  font-family: var(--font-ui);
+  font-family: var(--font-prose);
+  font-size: 17px;
+  line-height: 1.65;
   transition: background-color 400ms ease, color 400ms ease;
 }
 
-/* The technical label voice used throughout the Ars Arcanum plates */
-.label {
-  font-family: var(--font-tech);
-  font-size: 0.6875rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-}
-
-.prose-serif {
-  font-family: var(--font-prose);
-}
-
-/* Fine paper grain, only in the physical realm */
+/* Paper: fibre grain plus a couple of uneven washes, so the sheet is not
+   a flat rectangle of colour. */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.5;
-  background-image: radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.045) 1px, transparent 0);
-  background-size: 4px 4px;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23f)' opacity='0.42'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
 }
-html[data-realm="cognitive"] body::before {
-  opacity: 0.35;
-  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0);
+html[data-realm="cognitive"] body::before { mix-blend-mode: screen; }
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: var(--wash-opacity);
+  background-image:
+    radial-gradient(60% 45% at 12% 8%, rgba(140, 112, 60, 0.14), transparent 70%),
+    radial-gradient(45% 40% at 88% 72%, rgba(120, 96, 48, 0.12), transparent 70%),
+    radial-gradient(35% 30% at 68% 18%, rgba(90, 74, 40, 0.08), transparent 70%);
+}
+html[data-realm="cognitive"] body::after {
+  background-image:
+    radial-gradient(60% 45% at 12% 8%, rgba(110, 160, 210, 0.14), transparent 70%),
+    radial-gradient(45% 40% at 88% 72%, rgba(80, 130, 190, 0.12), transparent 70%);
+}
+
+/* The scholar's hand. Used for anything written onto the page rather than
+   printed on it: labels on plates, marginal notes, corrections. */
+.hand {
+  font-family: var(--font-hand);
+  color: var(--ink-soft);
+  line-height: 1.45;
+}
+
+/* Sparingly. Catalogue numbers and plate references only — this voice is the
+   printer's, not the annotator's. */
+.stamp {
+  font-family: var(--font-tech);
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* A sheet laid on the page. Torn along the right edge, never quite square. */
+.sheet {
+  position: relative;
+  background-color: var(--stock-raised);
+  box-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.05),
+    0 10px 26px -18px rgba(60, 45, 20, 0.5);
+}
+html[data-realm="cognitive"] .sheet {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.03),
+    0 10px 26px -18px rgba(0, 0, 0, 0.85);
+}
+
+/* A torn right edge, as a narrow strip hung off the side of the sheet. It has
+   to be its own element: masking the sheet itself would chew through the
+   content sitting on it. */
+.sheet--torn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -7px;
+  bottom: 0;
+  width: 8px;
+  pointer-events: none;
+  background-color: var(--stock-raised);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='120'%3E%3Cpath d='M0 0 H5 L3 9 L6 19 L2 29 L6 40 L3 51 L7 62 L2 73 L5 84 L2 95 L6 106 L3 116 L5 120 H0 Z' fill='%23000'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='120'%3E%3Cpath d='M0 0 H5 L3 9 L6 19 L2 29 L6 40 L3 51 L7 62 L2 73 L5 84 L2 95 L6 106 L3 116 L5 120 H0 Z' fill='%23000'/%3E%3C/svg%3E");
+  -webkit-mask-size: 8px 120px;
+  mask-size: 8px 120px;
+  -webkit-mask-repeat: repeat-y;
+  mask-repeat: repeat-y;
+}
+
+/* Slight rotations. A page set down by hand does not land at zero degrees. */
+.tilt-l { transform: rotate(-0.45deg); }
+.tilt-r { transform: rotate(0.35deg); }
+.tilt-lg { transform: rotate(-0.8deg); }
+
+/* Underlined the way someone underlines with a ruler that slipped. */
+.ruled {
+  background-image: linear-gradient(
+    to right,
+    var(--rule-strong) 0%,
+    var(--rule-strong) 92%,
+    transparent 100%
+  );
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 1px;
+}
+
+a { color: inherit; }
+
+::selection {
+  background: var(--accent-wash);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {

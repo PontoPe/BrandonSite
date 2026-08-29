@@ -13,16 +13,23 @@ export default function MetalTable() {
   const known = METALS.filter((m) => reveals(m.revealedBy)).length;
 
   return (
-    <figure className="m-0 rounded-sm border border-rule bg-stock-raised">
-      <figcaption className="flex flex-wrap items-baseline justify-between gap-2 border-b border-rule px-4 py-3">
-        <span className="label">Plate II — The Metallic Arts</span>
-        <span className="label">{known}/16 identified</span>
+    <figure className="sheet sheet--torn tilt-r m-0">
+      <figcaption className="flex flex-wrap items-end justify-between gap-3 px-5 pb-2 pt-4">
+        <span>
+          <span className="stamp">Plate II</span>
+          <span className="hand ml-3 text-[15px]">
+            the metallic arts, so far as they are known to me
+          </span>
+        </span>
+        <span className="hand text-[14px] text-ink-faint">
+          {known} of 16 identified
+        </span>
       </figcaption>
 
-      <div className="grid gap-px bg-rule p-px sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-x-7 gap-y-6 px-5 pb-5 sm:grid-cols-2 lg:grid-cols-4">
         {METAL_GROUPS.map((group) => (
-          <div key={group} className="bg-stock-raised p-4">
-            <p className="label border-b border-rule pb-2">{group}</p>
+          <div key={group}>
+            <p className="ruled pb-1 text-[17px] italic">{group}</p>
             <ul className="mt-3 space-y-3">
               {METALS.filter((m) => m.group === group).map((m) => {
                 const on = reveals(m.revealedBy);
@@ -41,16 +48,20 @@ export default function MetalTable() {
                       >
                         {on ? m.symbol : "?"}
                       </span>
-                      <span className="prose-serif text-[15px]">
+                      <span className="text-[15px]">
                         {on ? m.name : "Unidentified"}
                       </span>
                     </div>
-                    <p className="mt-1 pl-8 text-[13px] leading-snug text-ink-soft">
-                      {on ? m.allomancy : "No book on your shelf names this one."}
+                    <p className="mt-1 pl-8 text-[15px] leading-snug text-ink-soft">
+                      {on
+                        ? m.allomancy
+                        : "Nothing on your shelf names this one."}
                     </p>
                     {on && (
-                      <p className="label mt-1 pl-8">
-                        {m.reach} · {m.axis} · {m.feruchemy}
+                      <p className="hand mt-1 pl-8 text-[14px] text-ink-faint">
+                        acts {m.reach === "internal" ? "on the burner" : "on the world"},{" "}
+                        {m.axis === "push" ? "pushing" : "pulling"} &mdash;{" "}
+                        {m.feruchemy.replace("Stores", "stores")}
                       </p>
                     )}
                   </li>
@@ -62,9 +73,9 @@ export default function MetalTable() {
       </div>
 
       {count === 0 && (
-        <p className="prose-serif border-t border-rule px-4 py-3 text-[14px] text-ink-faint">
-          Sixteen cells, all of them blank. In-world scholars filled this table
-          in over centuries; you fill it in by reading.
+        <p className="hand border-t border-rule px-5 py-3 text-[16px]">
+          Sixteen cells, all of them blank. Scholars on that world took
+          centuries to fill this in. You fill it in by reading.
         </p>
       )}
     </figure>

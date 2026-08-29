@@ -51,34 +51,34 @@ export default function WorkshopPage() {
   return (
     <div className="space-y-14">
       <section className="max-w-3xl">
-        <p className="label">Craft</p>
-        <h1 className="prose-serif mt-2 text-4xl leading-tight">
+        <p className="stamp">Craft</p>
+        <h1 className="mt-2 text-4xl leading-tight">
           He gives the method away
         </h1>
-        <p className="prose-serif mt-5 text-[17px] leading-relaxed text-ink-soft">
+        <p className="mt-5 text-[17px] leading-relaxed text-ink-soft">
           The lectures are free, the annotations are published chapter by
           chapter, the deleted scenes go up, and the laws have been stated
           plainly enough that a generation of writers argues about them. He may
           turn out to be as influential as a teacher as he is as a novelist —
           which makes this a pillar of the site, not a footer link.
         </p>
-        <p className="prose-serif mt-4 text-[17px] leading-relaxed text-ink-soft">
+        <p className="mt-4 text-[17px] leading-relaxed text-ink-soft">
           They are also, read sideways, a decent theory of interface design.
         </p>
       </section>
 
-      <section className="space-y-px bg-rule">
+      <section className="space-y-6">
         {LAWS.map((law) => (
-          <article key={law.n} className="bg-stock-raised p-6">
-            <p className="label">{law.n} law</p>
-            <blockquote className="prose-serif mt-3 max-w-3xl border-l-2 border-accent pl-4 text-[19px] leading-snug">
+          <article key={law.n} className="sheet p-6">
+            <p className="stamp">{law.n} law</p>
+            <blockquote className="mt-3 max-w-3xl border-l-2 border-accent pl-4 text-[19px] leading-snug">
               {law.statement}
             </blockquote>
-            <p className="prose-serif mt-4 max-w-2xl text-[15px] leading-relaxed text-ink-soft">
+            <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-ink-soft">
               {law.gloss}
             </p>
             <p className="mt-3 max-w-2xl border-t border-rule pt-3 text-[13px] leading-relaxed text-ink-faint">
-              <span className="label">Applied here — </span>
+              <span className="stamp">Applied here — </span>
               {law.site}
             </p>
           </article>
@@ -86,14 +86,14 @@ export default function WorkshopPage() {
       </section>
 
       <section>
-        <h2 className="prose-serif border-b border-rule pb-2 text-2xl">
+        <h2 className="border-b border-rule pb-2 text-2xl">
           The shape of a book
         </h2>
-        <dl className="mt-4 grid gap-px bg-rule sm:grid-cols-2">
+        <dl className="mt-4 grid gap-5 sm:grid-cols-2">
           {STRUCTURE.map((s) => (
-            <div key={s.term} className="bg-stock-raised p-5">
-              <dt className="prose-serif text-lg">{s.term}</dt>
-              <dd className="prose-serif mt-2 text-[15px] leading-relaxed text-ink-soft">
+            <div key={s.term} className="sheet p-5">
+              <dt className="text-lg">{s.term}</dt>
+              <dd className="mt-2 text-[15px] leading-relaxed text-ink-soft">
                 {s.body}
               </dd>
             </div>
@@ -102,8 +102,8 @@ export default function WorkshopPage() {
       </section>
 
       <section className="max-w-3xl">
-        <h2 className="prose-serif text-2xl">On the prose</h2>
-        <p className="prose-serif mt-3 text-[16px] leading-relaxed text-ink-soft">
+        <h2 className="text-2xl">On the prose</h2>
+        <p className="mt-3 text-[16px] leading-relaxed text-ink-soft">
           The sentences are plain, quick and cinematic, and critics have never
           been shy about it. That is a trade rather than an oversight: the prose
           is built to disappear so that structure and system can carry the

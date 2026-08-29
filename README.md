@@ -48,10 +48,23 @@ been read, which is the safe state.
 
 ## Design
 
-Ink-on-paper at the surface — warm stock, serif prose, monospace technical labels,
-fine line-work diagrams, modelled on the Ars Arcanum appendix that closes each book.
-The realm toggle drops the palette into the Cognitive Realm. Tokens live at the top of
-`src/app/globals.css`.
+Modelled on the in-world field notebook rather than on a fantasy book jacket: the
+annotated plates and naturalist's sketch pages that close these novels, where a
+scholar draws a thing badly and writes beside it.
+
+- **Drawn, not generated.** Each world on the Atlas is its own small ink drawing —
+  a highstorm over scoured shelves, an ash-cone still falling, a cairn — in
+  `src/components/WorldGlyph.tsx`. Worlds you have not read stay as an unfinished
+  pencil under-sketch. Circles on a grid would read as a diagram; a wobbling line
+  reads as a hand.
+- **Two voices.** EB Garamond for anything printed, Architects Daughter for
+  anything *written onto* the page — plate labels, marginal notes, corrections.
+  The `Note` component is the second voice in the margin, with a drawn arrow.
+- **Nothing square.** Sheets are laid down at slight angles, torn along one edge,
+  on paper with fibre grain and uneven washes.
+- **Deterministic wobble.** Hand-drawn irregularity is seeded from each element's
+  id (`jitter()` in `Atlas.tsx`), so it is identical on server and client and does
+  not flicker on hydration.
 
 The prose in these books is deliberately plain and fast; the site makes the same
 trade — clarity over atmosphere, no scrollwork and no dragons.
@@ -64,8 +77,9 @@ npm run dev     # http://localhost:3000
 npm run build
 ```
 
-Next.js (App Router) · TypeScript · Tailwind v4. No external fonts or runtime data —
-it builds and runs fully offline.
+Next.js (App Router) · TypeScript · Tailwind v4. Fonts are fetched and self-hosted
+at build time by `next/font`, so the build needs network but the running site does
+not. No runtime data source.
 
 ## Status
 

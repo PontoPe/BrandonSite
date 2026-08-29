@@ -21,7 +21,6 @@ export interface WorldNode {
   system: string;
   x: number;
   y: number;
-  r: number;
   /** Reading any of these puts the world on the map. */
   revealedBy: BookId[];
   blurb: string;
@@ -50,57 +49,57 @@ export interface Shard {
 export const WORLDS: WorldNode[] = [
   {
     id: "scadrial", name: "Scadrial", veiledName: "A world of ash", system: "Scadrian system",
-    x: 300, y: 250, r: 34, revealedBy: ["final-empire", "alloy-of-law"],
+    x: 290, y: 255, revealedBy: ["final-empire", "alloy-of-law"],
     blurb: "Ash falls from the sky and mists rise at night. Later: railroads, broadsheets and revolvers over the same buried history.",
   },
   {
     id: "roshar", name: "Roshar", veiledName: "A world of storms", system: "Rosharan system",
-    x: 560, y: 190, r: 38, revealedBy: ["way-of-kings", "edgedancer"],
+    x: 540, y: 190, revealedBy: ["way-of-kings", "edgedancer"],
     blurb: "Hurricane-force highstorms sweep the continent from east to west. Everything living has learned to face stone-ward.",
   },
   {
     id: "sel", name: "Sel", veiledName: "A world of glyphs", system: "Selish system",
-    x: 150, y: 150, r: 30, revealedBy: ["elantris", "emperors-soul"],
+    x: 140, y: 155, revealedBy: ["elantris", "emperors-soul"],
     blurb: "Magic written as geometry — a line drawn wrong is a spell that fails.",
   },
   {
     id: "nalthis", name: "Nalthis", veiledName: "A world of colour", system: "Nalthian system",
-    x: 470, y: 400, r: 28, revealedBy: ["warbreaker"],
+    x: 455, y: 470, revealedBy: ["warbreaker"],
     blurb: "Life is measured in Breath, and colour is the fuel that spends it.",
   },
   {
     id: "taldain", name: "Taldain", veiledName: "A world half in daylight", system: "Taldain system",
-    x: 120, y: 380, r: 24, revealedBy: ["white-sand"],
+    x: 130, y: 395, revealedBy: ["white-sand"],
     blurb: "Tidally locked between a white sun and endless dark. Sand is the medium of power.",
   },
   {
     id: "threnody", name: "Threnody", veiledName: "A world of shades", system: "Threnodite system",
-    x: 690, y: 380, r: 22, revealedBy: ["shadows-for-silence"],
+    x: 700, y: 420, revealedBy: ["shadows-for-silence"],
     blurb: "Break one of three simple rules in the forests and the dead come for you.",
   },
   {
     id: "first-of-the-sun", name: "First of the Sun", veiledName: "An archipelago", system: "Drominad system",
-    x: 660, y: 470, r: 22, revealedBy: ["sixth-of-dusk", "emberdark"],
+    x: 600, y: 512, revealedBy: ["sixth-of-dusk", "emberdark"],
     blurb: "Islands where every creature has learned to kill efficiently, and two birds keep a trapper alive.",
   },
   {
     id: "lumar", name: "Lumar", veiledName: "A world of spore seas", system: "Lumar system",
-    x: 250, y: 480, r: 24, revealedBy: ["tress"],
+    x: 250, y: 500, revealedBy: ["tress"],
     blurb: "Twelve seas of coloured spores that bloom into catastrophe on contact with water.",
   },
   {
     id: "komashi", name: "Komashi", veiledName: "A world of shrines", system: "Komashi system",
-    x: 780, y: 250, r: 22, revealedBy: ["yumi"],
+    x: 762, y: 292, revealedBy: ["yumi"],
     blurb: "Stacked stones, summoned spirits, and a land under a shroud.",
   },
   {
     id: "canticle", name: "Canticle", veiledName: "A world outrunning dawn", system: "Canticle system",
-    x: 800, y: 130, r: 20, revealedBy: ["sunlit-man"],
+    x: 790, y: 118, revealedBy: ["sunlit-man"],
     blurb: "The sunrise is lethal, so the cities never stop moving.",
   },
   {
     id: "yolen", name: "Yolen", veiledName: "Somewhere before all of it", system: "Yolen system",
-    x: 430, y: 300, r: 18, revealedBy: ["arcanum-unbounded", "way-of-kings"],
+    x: 440, y: 332, revealedBy: ["arcanum-unbounded", "way-of-kings"],
     blurb: "Where it began. Named rarely, and never plainly.",
   },
 ];

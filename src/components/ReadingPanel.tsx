@@ -20,8 +20,8 @@ export default function ReadingPanel({ compact = false }: { compact?: boolean })
     <div className={compact ? "text-[13px]" : ""}>
       <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-rule pb-3">
         <div>
-          <p className="label">Your shelf</p>
-          <p className="prose-serif mt-1 text-[15px] text-ink-soft">
+          <p className="stamp">Your shelf</p>
+          <p className="mt-1 text-[15px] text-ink-soft">
             {count === 0
               ? "Nothing marked. The site assumes you have read none of it."
               : `${count} marked · depth: ${depth}`}
@@ -30,7 +30,7 @@ export default function ReadingPanel({ compact = false }: { compact?: boolean })
         {count > 0 && (
           <button
             onClick={clear}
-            className="label border border-rule px-2 py-1 transition hover:border-rule-strong hover:text-ink"
+            className="stamp border border-rule px-2 py-1 transition hover:border-rule-strong hover:text-ink"
           >
             Reset
           </button>
@@ -50,13 +50,13 @@ export default function ReadingPanel({ compact = false }: { compact?: boolean })
                 </h3>
                 <button
                   onClick={() => setLine(line.id, !all)}
-                  className="label whitespace-nowrap transition hover:text-accent"
+                  className="stamp whitespace-nowrap transition hover:text-accent"
                   aria-label={`${all ? "Unmark" : "Mark"} all of ${line.title}`}
                 >
                   {all ? "none" : some ? "all" : "all"}
                 </button>
               </div>
-              <p className="prose-serif mt-1 text-[13px] leading-snug text-ink-faint">
+              <p className="mt-1 text-[13px] leading-snug text-ink-faint">
                 {line.blurb}
               </p>
               <ul className="mt-2 space-y-1">
@@ -76,13 +76,13 @@ export default function ReadingPanel({ compact = false }: { compact?: boolean })
                           disabled={b.forthcoming}
                           className="mt-1 h-3 w-3 shrink-0 accent-[var(--accent)]"
                         />
-                        <span className="prose-serif text-[14px] leading-snug">
+                        <span className="text-[14px] leading-snug">
                           {b.title}
                           {b.kind !== "novel" && (
-                            <span className="label ml-2">{b.kind}</span>
+                            <span className="stamp ml-2">{b.kind}</span>
                           )}
                           {b.forthcoming && (
-                            <span className="label ml-2">{b.year} — not yet</span>
+                            <span className="stamp ml-2">{b.year} — not yet</span>
                           )}
                         </span>
                       </label>
@@ -97,7 +97,7 @@ export default function ReadingPanel({ compact = false }: { compact?: boolean })
 
       <button
         onClick={() => setShowNonCosmere((v) => !v)}
-        className="label mt-6 border-t border-rule pt-3 transition hover:text-accent"
+        className="stamp mt-6 border-t border-rule pt-3 transition hover:text-accent"
       >
         {showNonCosmere ? "— hide other worlds" : "+ show non-cosmere lines"}
       </button>

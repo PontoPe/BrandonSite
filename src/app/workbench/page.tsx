@@ -87,7 +87,7 @@ function Bar({ stage }: { stage: Stage }) {
         {STAGES.map((s) => (
           <span
             key={s}
-            className="label"
+            className="stamp"
             style={{
               fontSize: "0.5625rem",
               color: s === stage ? "var(--accent)" : undefined,
@@ -105,34 +105,34 @@ export default function WorkbenchPage() {
   return (
     <div className="space-y-14">
       <section className="max-w-3xl">
-        <p className="label">In progress</p>
-        <h1 className="prose-serif mt-2 text-4xl leading-tight">
+        <p className="stamp">In progress</p>
+        <h1 className="mt-2 text-4xl leading-tight">
           The work, while it is still work
         </h1>
-        <p className="prose-serif mt-5 text-[17px] leading-relaxed text-ink-soft">
+        <p className="mt-5 text-[17px] leading-relaxed text-ink-soft">
           Most author sites treat the unfinished book as a rumour. Here it is the
           headline, because radical visibility into the drafting is genuinely
           part of how this career runs — public progress, an annual state-of-things
           post, four novels written in secret and then handed straight to readers.
         </p>
-        <p className="prose-serif mt-4 text-[17px] leading-relaxed text-ink-soft">
+        <p className="mt-4 text-[17px] leading-relaxed text-ink-soft">
           Bars advance by named milestone rather than invented percentages,
           because a milestone is a thing that can be reported honestly.
         </p>
       </section>
 
-      <section className="space-y-px bg-rule">
+      <section className="space-y-6">
         {PROJECTS.map((p) => (
-          <article key={p.title} className="bg-stock-raised p-5">
+          <article key={p.title} className="sheet p-5">
             <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-              <h2 className="prose-serif text-xl">{p.title}</h2>
-              <span className="label">{p.when}</span>
+              <h2 className="text-xl">{p.title}</h2>
+              <span className="stamp">{p.when}</span>
             </div>
-            <p className="label mt-1">{p.line}</p>
+            <p className="stamp mt-1">{p.line}</p>
             <div className="mt-4 max-w-xl">
               <Bar stage={p.stage} />
             </div>
-            <p className="prose-serif mt-4 max-w-2xl text-[15px] leading-relaxed text-ink-soft">
+            <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-ink-soft">
               {p.note}
             </p>
           </article>
@@ -140,17 +140,17 @@ export default function WorkbenchPage() {
       </section>
 
       <section>
-        <h2 className="prose-serif border-b border-rule pb-2 text-2xl">
+        <h2 className="border-b border-rule pb-2 text-2xl">
           Off the page
         </h2>
-        <ul className="mt-4 grid gap-px bg-rule sm:grid-cols-2">
+        <ul className="mt-4 grid gap-5 sm:grid-cols-2">
           {EVENTS.map((e) => (
-            <li key={e.label} className="bg-stock-raised p-5">
+            <li key={e.label} className="sheet p-5">
               <div className="flex items-baseline justify-between gap-3">
-                <h3 className="prose-serif text-lg">{e.label}</h3>
-                <span className="label">{e.when}</span>
+                <h3 className="text-lg">{e.label}</h3>
+                <span className="stamp">{e.when}</span>
               </div>
-              <p className="prose-serif mt-2 text-[15px] leading-relaxed text-ink-soft">
+              <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">
                 {e.detail}
               </p>
             </li>
@@ -158,7 +158,7 @@ export default function WorkbenchPage() {
         </ul>
       </section>
 
-      <p className="label max-w-2xl leading-relaxed">
+      <p className="stamp max-w-2xl leading-relaxed">
         Status as publicly reported, August 2026. In a real build this page would
         read from the same source as the annual update rather than being kept by
         hand.

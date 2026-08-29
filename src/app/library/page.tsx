@@ -29,23 +29,23 @@ export default function LibraryPage() {
   return (
     <div className="space-y-14">
       <section className="max-w-3xl">
-        <p className="label">The shelves</p>
-        <h1 className="prose-serif mt-2 text-4xl leading-tight">
+        <p className="stamp">The shelves</p>
+        <h1 className="mt-2 text-4xl leading-tight">
           Four front doors, none of them wrong
         </h1>
-        <p className="prose-serif mt-5 text-[17px] leading-relaxed text-ink-soft">
+        <p className="mt-5 text-[17px] leading-relaxed text-ink-soft">
           Reading-order guides tend to hand you one queue and imply you have
           already made a mistake. These are entrances instead. Pick one, mark
           what you finish, and the rest of the site reorganises around you.
         </p>
       </section>
 
-      <section className="grid gap-px bg-rule sm:grid-cols-2 lg:grid-cols-4">
+      <section className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {ENTRANCES.map((e) => (
-          <article key={e.title} className="bg-stock-raised p-5">
-            <p className="label">{e.who}</p>
-            <h2 className="prose-serif mt-2 text-xl leading-snug">{e.title}</h2>
-            <p className="prose-serif mt-2 text-[14px] leading-relaxed text-ink-soft">
+          <article key={e.title} className="sheet p-5">
+            <p className="stamp">{e.who}</p>
+            <h2 className="mt-2 text-xl leading-snug">{e.title}</h2>
+            <p className="mt-2 text-[14px] leading-relaxed text-ink-soft">
               {e.why}
             </p>
           </article>

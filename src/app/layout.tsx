@@ -1,5 +1,21 @@
 import type { Metadata } from "next";
+import { EB_Garamond, Architects_Daughter } from "next/font/google";
 import "./globals.css";
+
+/** The book hand: what the text of these novels is set in. */
+const garamond = EB_Garamond({
+  variable: "--font-prose-face",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+/** The annotating hand: the scholar writing in the margins of the plate. */
+const hand = Architects_Daughter({
+  variable: "--font-hand-face",
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+});
 import { ReadingProvider } from "@/lib/reading";
 import RealmToggle from "@/components/RealmToggle";
 import Link from "next/link";
@@ -20,7 +36,10 @@ const NAV = [
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className="h-full antialiased">
+    <html
+      lang="en"
+      className={`${garamond.variable} ${hand.variable} h-full antialiased`}
+    >
       <head>
         {/* Settle the realm before first paint so nobody sees the wrong one flash. */}
         <script
@@ -31,23 +50,23 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body className="relative z-10 flex min-h-full flex-col">
         <ReadingProvider>
-          <header className="sticky top-0 z-30 border-b border-rule bg-stock/95 backdrop-blur">
-            <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-2 px-5 py-3">
-              <Link href="/" className="prose-serif text-lg tracking-tight">
+          <header className="sticky top-0 z-30 border-b border-rule bg-stock/92 backdrop-blur">
+            <div className="mx-auto flex max-w-6xl flex-wrap items-baseline gap-x-7 gap-y-2 px-5 py-3">
+              <Link href="/" className="text-[22px] italic leading-none">
                 Ars&nbsp;Arcanum
               </Link>
-              <nav className="flex flex-wrap gap-x-5 gap-y-1">
+              <nav className="flex flex-wrap items-baseline gap-x-5 gap-y-1">
                 {NAV.map((n) => (
                   <Link
                     key={n.href}
                     href={n.href}
-                    className="label transition hover:text-accent"
+                    className="text-[16px] text-ink-soft underline-offset-4 transition hover:text-accent hover:underline"
                   >
                     {n.label}
                   </Link>
                 ))}
               </nav>
-              <div className="ml-auto">
+              <div className="ml-auto self-center">
                 <RealmToggle />
               </div>
             </div>
@@ -59,8 +78,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 
           <footer className="border-t border-rule">
             <div className="mx-auto max-w-6xl px-5 py-8">
-              <p className="label">Unofficial concept redesign</p>
-              <p className="prose-serif mt-2 max-w-2xl text-[14px] leading-relaxed text-ink-soft">
+              <p className="stamp">Unofficial concept redesign</p>
+              <p className="hand mt-2 max-w-2xl text-[16px]">
                 A speculative design study, not affiliated with or endorsed by
                 Brandon Sanderson or Dragonsteel Books. Titles, worlds and
                 characters belong to their author; everything here is an
