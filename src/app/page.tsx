@@ -66,7 +66,7 @@ export default function Home() {
             {/* The studio shot is lit dark, so it sits on the jacket without a
                 frame — the panel and the photograph share a ground. */}
             <Portrait
-              src="/brandon-desk.webp"
+              src="/brandon-desk.jpg"
               alt="Brandon Sanderson at his desk, hands folded, leatherbound volumes stacked beside him."
               className="aspect-[16/10] w-full lg:aspect-[4/3]"
               priority
@@ -201,7 +201,7 @@ export default function Home() {
         </div>
         <div className="space-y-6">
           <Portrait
-            src="/brandon-portrait.webp"
+            src="/brandon-portrait.jpg"
             alt="Brandon Sanderson seated, in a dark jacket and a graphic t-shirt."
             className="aspect-[4/5] w-full"
             caption="Utah, where the whole operation is run from."

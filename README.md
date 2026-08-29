@@ -84,16 +84,18 @@ trade — clarity over atmosphere, no scrollwork and no dragons.
 
 ## Photographs
 
-Four image slots are wired up and empty. Drop files with these exact names into
-`public/` and they appear; until then each slot renders a pencil block-in
-captioned with the filename it wants, rather than a broken image.
+Four image slots are wired up and empty. Drop files into `public/` with these
+stems and they appear; until then each slot renders a pencil block-in captioned
+with the filename it wants, rather than a broken image. The extension is only a
+first guess — a slot tries `.webp`, `.jpg`, `.jpeg` and `.png` in turn before
+giving up, so only the stem has to match.
 
 | File | Where it goes | What suits it |
 | --- | --- | --- |
-| `public/brandon-desk.webp` | The jacket panel, beside his name | The dark studio shot — it is lit to the same ground as the panel, so it sits there without a frame |
-| `public/brandon-portrait.webp` | Beside "Who he is" | A warmer seated portrait, cropped 4:5 |
+| `public/brandon-desk.jpg` | The jacket panel, beside his name | The dark studio shot — it is lit to the same ground as the panel, so it sits there without a frame |
+| `public/brandon-portrait.jpg` | Beside "Who he is" | A warmer seated portrait, cropped 4:5 |
 | `public/weekly-update-thumb.webp` | Lead card on `/` and `/blog` | The current weekly-update thumbnail, 16:9 |
-| `public/weekly-update-2.webp` | Second weekly post on `/blog` | Any older update thumbnail, 16:9 |
+| `public/weekly-update-2.jpg` | Second weekly post on `/blog` | Any older update thumbnail, 16:9 |
 
 ## Running it
 

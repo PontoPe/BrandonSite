@@ -57,7 +57,7 @@ export const POSTS: Post[] = [
     title: "Emberdark is in the post",
     date: "21 August 2026",
     iso: "2026-08-21",
-    thumb: "/weekly-update-2.webp",
+    thumb: "/weekly-update-2.jpg",
     blurb:
       "Fulfilment on the Isles of the Emberdark run, plus a question about how much of a magic system a reader should be told up front.",
   },
