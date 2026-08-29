@@ -58,6 +58,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       className={`${display.variable} ${garamond.variable} ${hand.variable} h-full antialiased`}
+      // The realm script below stamps data-realm on <html> before React
+      // hydrates, so the server markup and the first client render differ by
+      // that one attribute, by design. Without this, React reports it as a
+      // hydration mismatch on every page load.
+      suppressHydrationWarning
     >
       <head>
         {/* Settle the realm before first paint so nobody sees the wrong one flash. */}
