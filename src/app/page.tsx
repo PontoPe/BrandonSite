@@ -1,72 +1,225 @@
-import Atlas from "@/components/Atlas";
+import Link from "next/link";
 import Note from "@/components/Note";
-import ReadingPanel from "@/components/ReadingPanel";
+import RingGauge from "@/components/RingGauge";
+
+/**
+ * Layer one: the man.
+ *
+ * An earlier pass opened on the cosmere chart, which put a deep-reader
+ * instrument in front of someone who may only have heard the name. The
+ * connected universe is a reward for reading, not the pitch — so the front
+ * door is who he is, what he is doing this week, and where to start. The
+ * machinery lives two layers down, and you choose to go there.
+ */
+
+const PROGRESS = [
+  { label: "Mistborn screenplay", value: 100, detail: "written himself, full time" },
+  { label: "Ghostbloods, book one", value: 27, detail: "second draft" },
+  { label: "Songrise", value: 100, detail: "fourth draft" },
+  { label: "Riftwake, book three", value: 57, detail: "first draft" },
+];
+
+const ENTRANCES = [
+  { title: "The Final Empire", who: "If you already read fantasy",
+    why: "A heist crew against a god-emperor who has already won. Three books, and it finishes what it starts." },
+  { title: "Elantris", who: "If you are new to the genre",
+    why: "The first novel he sold, and self-contained. Nothing else is required of you." },
+  { title: "Tress of the Emerald Sea", who: "If you want to test the water",
+    why: "Standalone, warm, and stranger than it looks. It spoils nothing you would miss." },
+  { title: "The Way of Kings", who: "If you want the big one",
+    why: "A thousand pages before it turns. Readers who get past that generally do not stop." },
+];
 
 export default function Home() {
   return (
-    <div className="space-y-16">
-      <section className="grid gap-8 lg:grid-cols-[minmax(0,42rem)_1fr] lg:items-end">
+    <div className="space-y-20">
+      {/* ---- The jacket ---- */}
+      <section className="ink-panel -mx-5 px-5 py-14 sm:px-10 sm:py-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,34rem)_1fr] lg:items-end">
+            <div>
+              <p className="stamp">Novelist &middot; Utah</p>
+              <h1 className="display mt-4 text-[3rem] leading-[0.94] sm:text-[4.5rem]">
+                Brandon
+                <br />
+                Sanderson
+              </h1>
+              <p
+                className="mt-7 text-[1.75rem] italic leading-tight sm:text-[2.1rem]"
+                style={{ color: "var(--panel-fg)" }}
+              >
+                He finishes things.
+              </p>
+              <p
+                className="mt-5 max-w-xl text-[17px] leading-relaxed"
+                style={{ color: "var(--panel-dim)" }}
+              >
+                In a genre with a reputation for unfinished series, that is the
+                whole reputation. He was handed someone else&rsquo;s unfinishable
+                one &mdash; The Wheel of Time, after Robert Jordan died &mdash;
+                and closed it in three volumes. He has not been late since.
+              </p>
+            </div>
+
+            <div>
+              <p className="stamp">What he is working on, right now</p>
+              <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-4 lg:grid-cols-2">
+                {PROGRESS.map((p) => (
+                  <RingGauge key={p.label} {...p} />
+                ))}
+              </div>
+              <p
+                className="hand mt-6 text-[15px]"
+                style={{ color: "var(--panel-dim)" }}
+              >
+                Published percentages on books nobody can read yet. He has done
+                this for years.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ---- This week ---- */}
+      <section>
+        <h2 className="display ruled pb-2 text-[1.5rem]">This week</h2>
+        <div className="mt-6 grid gap-6 lg:grid-cols-3">
+          <article className="sheet tilt-l p-6 lg:col-span-2">
+            <p className="hand text-[16px]" style={{ color: "var(--brand)" }}>
+              1 September 2026 &mdash; three days away
+            </p>
+            <h3 className="mt-2 text-[1.8rem] leading-tight">Blightfall</h3>
+            <p className="stamp mt-1">Riftwake, book one &middot; with Janci Patterson</p>
+            <p className="mt-4 max-w-2xl text-[17px] leading-relaxed text-ink-soft">
+              The Cytoverse after the war. Skyward Flight is sent out on what
+              should be a routine diplomatic escort and arrives at a world half
+              swallowed by invasive forest, ringed with drifting wreckage. First
+              of three.
+            </p>
+          </article>
+
+          <article className="sheet tilt-r p-6">
+            <p className="hand text-[16px]" style={{ color: "var(--brand)" }}>
+              January 2026
+            </p>
+            <h3 className="mt-2 text-[1.4rem] leading-tight">
+              Apple took the whole cosmere
+            </h3>
+            <p className="mt-3 text-[16px] leading-relaxed text-ink-soft">
+              Not one series &mdash; all of it. Mistborn first as a feature, then
+              Stormlight as a show. He wrote the Mistborn screenplay himself,
+              full time, rather than hand it over.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      {/* ---- Who he is ---- */}
+      <section className="grid gap-10 lg:grid-cols-[minmax(0,38rem)_1fr]">
         <div>
-          <p className="stamp">Plate I &middot; the silver sea</p>
-          <h1 className="mt-3 text-[2.75rem] leading-[1.06] sm:text-[3.4rem]">
-            There is no correct order.
-            <em className="block italic">So the map is built from yours.</em>
-          </h1>
+          <h2 className="display ruled pb-2 text-[1.5rem]">Who he is</h2>
           <p className="mt-6 text-[18px] leading-relaxed text-ink-soft">
-            Twenty-odd novels across ten worlds, quietly sharing one universe. A
-            reader might arrive through a heist on a world of ash, or a war on a
-            world of storms, or one strange standalone somebody pressed into
-            their hands &mdash; and each route uncovers the connections in a
-            different sequence.
+            He wrote a shelf of novels nobody bought before Elantris sold in
+            2005. Since then he has published at a rate that makes other
+            novelists uneasy, and he has done it while giving the method away:
+            his university lectures go up free, his chapters come with
+            annotations, and his three laws of magic are argued over by a
+            generation of writers who have never met him.
           </p>
           <p className="mt-4 text-[18px] leading-relaxed text-ink-soft">
-            So nothing is gated behind a spoiler switch. Every world, thread and
-            power on the chart names the books that earn it. Mark what you have
-            read; the chart inks itself in from that, and stays quiet about the
-            rest.
+            In 2022 he admitted he had written four novels in secret during
+            lockdown, put them on Kickstarter, and raised $41.7 million &mdash;
+            the largest campaign in the platform&rsquo;s history. He now runs his
+            own publisher, Dragonsteel, out of Utah, with its own warehouse and
+            its own convention.
+          </p>
+          <p className="mt-4 text-[18px] leading-relaxed text-ink-soft">
+            The prose is plain and fast, and critics say so. That is a trade, not
+            an oversight: it gets out of the way so structure and system can
+            carry the weight.
+          </p>
+          <p className="mt-6 text-[17px]">
+            <Link href="/workshop" className="text-accent underline underline-offset-4">
+              How he builds a book &rarr;
+            </Link>
           </p>
         </div>
-
-        <Note className="lg:mb-3 lg:ml-6">
-          Drawn from what I have seen myself, or been told by someone I had
-          reason to believe. The blank spaces are honest &mdash; I would rather
-          leave a world unnamed than name it wrongly.
+        <Note className="lg:mt-20 lg:ml-6">
+          Worth saying plainly: the reason to start here rather than with the
+          shared universe is that not one of these books requires the others. The
+          connections are a reward, not a prerequisite.
         </Note>
       </section>
 
+      {/* ---- Where to start ---- */}
       <section>
-        <Atlas />
+        <h2 className="display ruled pb-2 text-[1.5rem]">Where to start</h2>
+        <p className="mt-4 max-w-2xl text-[17px] leading-relaxed text-ink-soft">
+          Reading-order guides tend to hand you one queue and imply you have
+          already made a mistake. These are four front doors, and none of them is
+          wrong.
+        </p>
+        <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {ENTRANCES.map((e, i) => (
+            <article
+              key={e.title}
+              className={`sheet p-5 ${i % 2 ? "tilt-r" : "tilt-l"}`}
+            >
+              <p className="stamp">{e.who}</p>
+              <h3 className="mt-2 text-[1.25rem] leading-snug">{e.title}</h3>
+              <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">
+                {e.why}
+              </p>
+            </article>
+          ))}
+        </div>
+        <p className="mt-6 text-[17px]">
+          <Link href="/library" className="text-accent underline underline-offset-4">
+            All of it, by series &rarr;
+          </Link>
+        </p>
       </section>
 
-      <section className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_21rem]">
-        <div className="max-w-2xl">
-          <p className="stamp">The first law, as an interface</p>
-          <h2 className="mt-2 text-[2rem] leading-tight">
-            Understanding has to be earned in order.
-          </h2>
-          <p className="mt-5 text-[17px] leading-relaxed text-ink-soft">
-            Sanderson&rsquo;s first law holds that a magic system can resolve
-            conflict only as satisfyingly as the reader understands it. The same
-            is true of a universe this size: a revelation delivered early is not
-            a revelation, it is an inconvenience. The chart above enforces that
-            rather than trusting anyone to look away.
-          </p>
-          <p className="mt-4 text-[17px] leading-relaxed text-ink-soft">
-            Depth is not a setting. It is a consequence &mdash; of which books
-            are on the shelf behind you, and of nothing else.
-          </p>
-
-          <Note side="left" className="mt-8">
-            Second law: what a thing cannot do is more interesting than what it
-            can. A site that shows you everything at once has no limitations, and
-            so nothing to be curious about.
-          </Note>
-        </div>
-
-        <div className="lg:sticky lg:top-24 lg:self-start">
-          <div className="sheet tilt-l max-h-[72vh] overflow-y-auto p-5">
-            <ReadingPanel />
+      {/* ---- The way down ---- */}
+      <section className="ink-panel -mx-5 px-5 py-12 sm:px-10 sm:py-16">
+        <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[minmax(0,36rem)_1fr] lg:items-center">
+          <div>
+            <p className="stamp">Once you are further in</p>
+            <h2 className="display mt-3 text-[2rem] sm:text-[2.6rem]">
+              Most of them
+              <br />
+              share a universe
+            </h2>
+            <p
+              className="mt-5 max-w-xl text-[17px] leading-relaxed"
+              style={{ color: "var(--panel-dim)" }}
+            >
+              You will start noticing a man who turns up in books that have
+              nothing to do with each other. There is a chart for that &mdash;
+              and it stays blank until your reading has earned it, so it is safe
+              to open now.
+            </p>
+            <p className="mt-6">
+              <Link
+                href="/cosmere"
+                className="display inline-block border px-5 py-3 text-[15px] transition"
+                style={{
+                  borderColor: "var(--panel-dim)",
+                  color: "var(--panel-fg)",
+                }}
+              >
+                Open the chart &darr;
+              </Link>
+            </p>
           </div>
+          <p
+            className="hand text-[16px] lg:justify-self-end lg:text-right"
+            style={{ color: "var(--panel-dim)" }}
+          >
+            Nothing below this line is required.
+            <br />
+            It is for the second read, not the first.
+          </p>
         </div>
       </section>
     </div>

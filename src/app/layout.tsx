@@ -29,17 +29,27 @@ import RealmToggle from "@/components/RealmToggle";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Ars Arcanum — a concept redesign",
+  title: "Brandon Sanderson — a concept redesign",
   description:
-    "An unofficial concept redesign for Brandon Sanderson's work: a reader's instrument for a universe with no correct reading order.",
+    "An unofficial concept redesign: the author first, his work second, and the connected universe kept two layers down where it belongs.",
 };
 
+/**
+ * The nav is the layering, made visible.
+ *
+ * Surface: the man and his books — everything a newcomer needs and nothing
+ * they don't. Below the divider: the reader's instruments, which are a reward
+ * for having read rather than an entry requirement.
+ */
 const NAV = [
-  { href: "/", label: "Atlas" },
-  { href: "/library", label: "Library" },
-  { href: "/systems", label: "Systems" },
-  { href: "/workbench", label: "Workbench" },
-  { href: "/workshop", label: "Workshop" },
+  { href: "/library", label: "Books" },
+  { href: "/workbench", label: "Progress" },
+  { href: "/workshop", label: "Writing" },
+];
+
+const DEEPER = [
+  { href: "/cosmere", label: "The Cosmere" },
+  { href: "/systems", label: "Plates" },
 ];
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -64,7 +74,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                 <span aria-hidden className="not-italic" style={{ color: "var(--brand)" }}>
                   &#9670;
                 </span>
-                Ars&nbsp;Arcanum
+                Brandon&nbsp;Sanderson
               </Link>
               <nav className="flex flex-wrap items-baseline gap-x-5 gap-y-1">
                 {NAV.map((n) => (
@@ -72,6 +82,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                     key={n.href}
                     href={n.href}
                     className="text-[16px] text-ink-soft underline-offset-4 transition hover:text-accent hover:underline"
+                  >
+                    {n.label}
+                  </Link>
+                ))}
+                <span aria-hidden className="text-rule-strong">
+                  &#8595;
+                </span>
+                {DEEPER.map((n) => (
+                  <Link
+                    key={n.href}
+                    href={n.href}
+                    className="hand text-[16px] underline-offset-4 transition hover:text-accent hover:underline"
                   >
                     {n.label}
                   </Link>

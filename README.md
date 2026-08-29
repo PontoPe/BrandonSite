@@ -6,30 +6,38 @@ study, and the footer says so on every page.
 
 ## The idea
 
-Twenty-odd novels across ten worlds, quietly sharing one universe, and **no correct
-order to read them in**. Someone may arrive through Mistborn, through Stormlight, or
-through a standalone a friend pressed on them, and each route reveals the
-connections in a different sequence.
+The site is built in layers, and the order matters.
+
+**Layer one is the man.** Who he is, what he is drafting this week, what ships
+next, and where to start. A newcomer may only have heard the name; the front
+door owes them nothing more complicated than that. It opens on a jacket panel —
+dark, bold, the imprint's own register.
+
+**Layer two is the work.** Every book, grouped by line, never sequenced overall.
+
+**Layer three is the cosmere.** Most of his novels quietly share one universe.
+You do not need to know that to enjoy any of them, so it is not the pitch — it
+is a reward for having read, kept behind a door you choose to open. The further
+in you go, the more the site turns from cover into endpaper.
+
+An earlier pass had this backwards: it opened on the chart, putting a
+deep-reader instrument in front of people who had not read anything yet.
+
+## The chart, two layers down
+
+There is no correct order through these books. Someone may arrive through
+Mistborn, through Stormlight, or through a standalone a friend pressed on them,
+and each route reveals the connections in a different sequence.
 
 So there is no global spoiler switch. Instead:
 
 > Every world, thread, power and metal declares the books that earn it.
-> The reader marks what they have actually read, and the site assembles
+> The reader marks what they have actually read, and the chart assembles
 > itself from that.
 
-Depth is **derived, never chosen**. Two readers with the same number of books behind
-them will not see the same site. This is Sanderson's first law — that satisfaction
-scales with understanding — enforced as an interface rule.
-
-## Structure
-
-| Route | What it is |
-| --- | --- |
-| `/` | **Atlas** — Plate I. A star chart of ten worlds. Unread worlds stay dashed and unnamed; threads between them appear only when a book you've read reveals them. |
-| `/library` | Four entrances rather than one queue, then the full shelves with per-book toggles. |
-| `/systems` | **Plate II** — the Metallic Arts table. Same revelation engine: sixteen cells that fill in as you read. |
-| `/workbench` | Work in progress, on real published percentages, plus what is coming and the adaptations. |
-| `/workshop` | The three laws, the promise/progress/payoff armature, and a note on the prose. |
+Depth is **derived, never chosen**. Two readers with the same number of books
+behind them will not see the same chart. This is Sanderson's first law — that
+satisfaction scales with understanding — enforced as an interface rule.
 
 ## How the revelation engine works
 

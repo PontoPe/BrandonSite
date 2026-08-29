@@ -132,6 +132,25 @@ html[data-realm="cognitive"] body::after {
     radial-gradient(45% 40% at 88% 72%, rgba(80, 130, 190, 0.12), transparent 70%);
 }
 
+/* A jacket panel. Dark in either realm, because a cover is a cover in any
+   light — this is the one element that does not follow the page. */
+.ink-panel {
+  --panel-bg: #1a1713;
+  --panel-fg: #f4eee2;
+  --panel-dim: #a89e8c;
+  --panel-rule: #34302a;
+  background-color: var(--panel-bg);
+  color: var(--panel-fg);
+}
+html[data-realm="cognitive"] .ink-panel {
+  --panel-bg: #05070b;
+  --panel-fg: #e9e4d7;
+  --panel-dim: #7d7768;
+  --panel-rule: #1c212b;
+}
+.ink-panel .stamp { color: var(--panel-dim); }
+.ink-panel .hand { color: var(--panel-dim); }
+
 /* The cover voice. Dragonsteel's own register — heavy, tight, shouted. Used
    for section headings and standfirsts, never for running text, exactly as it
    works on the jackets. */

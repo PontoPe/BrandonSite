@@ -24,7 +24,7 @@ export default function RingGauge({
 
   return (
     <figure className="m-0 flex flex-col items-center text-center">
-      <svg viewBox="0 0 96 96" className="h-28 w-28" role="img" aria-label={`${label}: ${done} per cent`}>
+      <svg viewBox="0 0 96 96" className="h-28 w-28 text-current" role="img" aria-label={`${label}: ${done} per cent`}>
         <circle
           cx="48"
           cy="48"
@@ -62,7 +62,8 @@ export default function RingGauge({
           x="48"
           y="53"
           textAnchor="middle"
-          style={{ fontFamily: "var(--font-hand)", fontSize: 19, fill: "var(--ink)" }}
+          fill="currentColor"
+          style={{ fontFamily: "var(--font-hand)", fontSize: 19 }}
         >
           {done}%
         </text>
