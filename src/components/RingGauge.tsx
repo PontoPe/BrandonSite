@@ -55,20 +55,20 @@ function Motifs({
     return (
       // Not currentColor: on paper that paints mist as a dark smudge. The pencil
       // token sits between both grounds, so it reads as haze either way.
-      <g className="motif-mist" opacity="0.42" aria-hidden>
+      <g className="motif-mist" opacity="0.85" aria-hidden>
         {[
-          "M14 34 C28 26 46 30 62 26 C74 23 82 27 90 24",
-          "M10 48 C26 42 44 47 60 43 C72 40 80 44 88 41",
-          "M16 60 C30 55 46 59 60 56 C70 54 78 57 86 55",
+          "M-6 30 C14 20 40 28 62 20 C78 14 92 20 104 16",
+          "M-8 50 C12 41 38 50 60 42 C76 36 92 43 104 38",
+          "M-6 68 C16 60 40 68 62 60 C78 54 92 60 104 57",
         ].map((d) => (
           <path
             key={d}
             d={d}
             fill="none"
             stroke="var(--pencil)"
-            strokeWidth="2.4"
+            strokeWidth="4"
             strokeLinecap="round"
-            filter={`url(#${blurId})`}
+            filter={`url(#${blurId}-soft)`}
           />
         ))}
       </g>
@@ -199,7 +199,10 @@ export default function RingGauge({
       >
         <defs>
           <filter id={blurId} x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="2.4" />
+            <feGaussianBlur stdDeviation="2.6" />
+          </filter>
+          <filter id={`${blurId}-soft`} x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="1.3" />
           </filter>
         </defs>
 

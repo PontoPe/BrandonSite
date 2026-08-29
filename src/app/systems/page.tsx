@@ -1,3 +1,4 @@
+import CrypticField from "@/components/CrypticField";
 import MetalTable from "@/components/MetalTable";
 import ReadingPanel from "@/components/ReadingPanel";
 
@@ -6,6 +7,7 @@ export const metadata = { title: "Systems — Ars Arcanum" };
 export default function SystemsPage() {
   return (
     <div className="layer-deep space-y-10">
+      <CrypticField />
       <section className="max-w-3xl">
         <p className="stamp">Plates</p>
         <h1 className="display mt-3 text-[2.6rem] sm:text-[3.2rem]">

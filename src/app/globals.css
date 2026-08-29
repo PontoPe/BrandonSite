@@ -263,14 +263,14 @@ html[data-realm="cognitive"] .sheet {
 
 /* Mist, for Mistborn: tendrils that drift across and thin out. */
 @keyframes mist-drift {
-  0%   { transform: translateX(-14px); opacity: 0; }
-  25%  { opacity: 0.5; }
-  75%  { opacity: 0.35; }
-  100% { transform: translateX(14px); opacity: 0; }
+  0%   { transform: translateX(-22px); opacity: 0; }
+  20%  { opacity: 1; }
+  70%  { opacity: 0.85; }
+  100% { transform: translateX(22px); opacity: 0; }
 }
-.motif-mist > * { animation: mist-drift 9s ease-in-out infinite; }
-.motif-mist > *:nth-child(2) { animation-duration: 12s; animation-delay: -3s; }
-.motif-mist > *:nth-child(3) { animation-duration: 15s; animation-delay: -7s; }
+.motif-mist > * { animation: mist-drift 7s ease-in-out infinite; }
+.motif-mist > *:nth-child(2) { animation-duration: 9.5s; animation-delay: -2.5s; }
+.motif-mist > *:nth-child(3) { animation-duration: 12s; animation-delay: -5.5s; }
 
 /* Burning metal, for the Mistborn-era draft: an ember at the leading edge that
    flares and settles, the way a reserve burns down. */
@@ -278,7 +278,14 @@ html[data-realm="cognitive"] .sheet {
   0%, 100% { opacity: 0.25; transform: scale(0.85); }
   50%      { opacity: 0.75; transform: scale(1.15); }
 }
-.motif-ember-glow { animation: ember-burn 2.6s ease-in-out infinite; transform-origin: center; }
+.motif-ember-glow {
+  animation: ember-burn 2.6s ease-in-out infinite;
+  /* SVG defaults transform-box to view-box, which makes "center" the centre of
+     the whole 96x96 box rather than of this circle — so the ember swung away
+     from the arc tip as it pulsed instead of breathing in place. */
+  transform-box: fill-box;
+  transform-origin: center;
+}
 @keyframes ember-lines {
   0%, 100% { opacity: 0.1; }
   50%      { opacity: 0.45; }
@@ -361,6 +368,24 @@ html[data-realm="cognitive"] .sheet {
   .glyphward__ember { animation: none; opacity: 0.22; }
 }
 
+/* The Cryptic field, on the deep layer only. Fixed, inert, and it takes the
+   storm's place rather than sitting on top of it. */
+.cryptic-field {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  color: var(--ink);
+  opacity: 0.07;
+}
+html[data-realm="cognitive"] .cryptic-field {
+  color: var(--revealed);
+  opacity: 0.13;
+}
+
+/* Descending swaps the weather for the mathematics. */
+body:has(.layer-deep) .storm-backdrop { display: none; }
+
 /* ---------------------------------------------------------------------------
    The storm backdrop. Sits behind everything, catches nothing.
    --------------------------------------------------------------------------- */
@@ -368,7 +393,7 @@ html[data-realm="cognitive"] .sheet {
 .storm-backdrop {
   position: fixed;
   inset: 0;
-  z-index: 0;
+  z-index: -1;
   pointer-events: none;
   overflow: hidden;
   color: var(--ink);

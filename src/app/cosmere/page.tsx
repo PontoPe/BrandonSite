@@ -1,3 +1,4 @@
+import CrypticField from "@/components/CrypticField";
 import Atlas from "@/components/Atlas";
 import Note from "@/components/Note";
 import ReadingPanel from "@/components/ReadingPanel";
@@ -12,6 +13,7 @@ export const metadata = {
 export default function CosmerePage() {
   return (
     <div className="layer-deep space-y-16">
+      <CrypticField />
       <section className="grid gap-8 lg:grid-cols-[minmax(0,42rem)_1fr] lg:items-end">
         <div>
           <p className="stamp">Third layer &middot; for readers already in</p>
