@@ -27,9 +27,16 @@ const SWEEP_MS = 1500;
 const useIsomorphicLayoutEffect =
   typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
-/** Where the arc's leading edge sits, so a motif can ride on it. */
-function tipAngle(value: number) {
-  return -90 + (value / 100) * 360;
+/**
+ * How far round the leading edge has travelled, in degrees.
+ *
+ * The motif's artwork sits at twelve o'clock and the arc also starts there, so
+ * this is simply the fraction swept — no -90 correction. Subtracting it again
+ * (the arc group already carries its own rotate(-90)) parks the motif at the
+ * arc's start instead of its tip.
+ */
+function tipRotation(value: number) {
+  return (value / 100) * 360;
 }
 
 function Motifs({
@@ -70,7 +77,11 @@ function Motifs({
 
   if (motif === "ember") {
     return (
-      <g transform={`rotate(${tipAngle(value)} 48 48)`} aria-hidden>
+      <g
+        className="tip-follow"
+        style={{ "--tip-rotation": `${tipRotation(value)}deg` } as React.CSSProperties}
+        aria-hidden
+      >
         <g transform={`translate(48 ${48 - R})`}>
           <circle
             className="motif-ember-glow"
@@ -112,13 +123,17 @@ function Motifs({
 
   // rift — debris shed from the leading edge, falling behind it
   return (
-    <g transform={`rotate(${tipAngle(value)} 48 48)`} aria-hidden>
+    <g
+      className="tip-follow"
+      style={{ "--tip-rotation": `${tipRotation(value)}deg` } as React.CSSProperties}
+      aria-hidden
+    >
       <g className="motif-rift" transform={`translate(48 ${48 - R})`}>
         {[
-          { cx: -2, cy: 1, r: 1.5 },
-          { cx: -5, cy: -2, r: 1.1 },
-          { cx: -8, cy: 2, r: 0.9 },
-          { cx: -3, cy: 4, r: 0.7 },
+          { cx: -2.5, cy: 1, r: 2.1 },
+          { cx: -6, cy: -2.5, r: 1.6 },
+          { cx: -10, cy: 2.5, r: 1.3 },
+          { cx: -4, cy: 5, r: 1 },
         ].map((d, i) => (
           <circle key={i} {...d} fill="var(--brand)" />
         ))}
@@ -178,6 +193,9 @@ export default function RingGauge({
         className="h-28 w-28"
         role="img"
         aria-label={`${label}: ${done} per cent`}
+        // Declared here so the arc and the tip-riding motif, which are
+        // siblings, both inherit the same stagger.
+        style={{ "--ring-delay": `${delay}ms` } as React.CSSProperties}
       >
         <defs>
           <filter id={blurId} x="-50%" y="-50%" width="200%" height="200%">
@@ -210,7 +228,6 @@ export default function RingGauge({
               {
                 "--ring-circumference": CIRCUMFERENCE,
                 "--ring-offset": offset,
-                "--ring-delay": `${delay}ms`,
               } as React.CSSProperties
             }
           />
