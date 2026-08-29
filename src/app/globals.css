@@ -214,6 +214,20 @@ html[data-realm="cognitive"] .sheet {
   mask-repeat: repeat-y;
 }
 
+/* Feathered edges, for a photograph that shares a ground with the panel behind
+   it. Fades the inner and lower edges so the picture resolves into the jacket
+   instead of sitting on it inside a visible rectangle. */
+.feather {
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, #000 20%),
+    linear-gradient(to bottom, #000 78%, transparent 100%);
+  mask-image:
+    linear-gradient(to right, transparent 0%, #000 20%),
+    linear-gradient(to bottom, #000 78%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
 /* Slight rotations. A page set down by hand does not land at zero degrees. */
 .tilt-l { transform: rotate(-0.45deg); }
 .tilt-r { transform: rotate(0.35deg); }

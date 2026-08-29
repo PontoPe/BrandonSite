@@ -68,7 +68,7 @@ export default function Home() {
             <Portrait
               src="/brandon-desk.jpg"
               alt="Brandon Sanderson at his desk, hands folded, leatherbound volumes stacked beside him."
-              className="aspect-[16/10] w-full lg:aspect-[4/3]"
+              className="feather aspect-[16/10] w-full lg:aspect-[4/3]"
               priority
             />
           </div>
